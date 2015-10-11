@@ -49,24 +49,12 @@ var JUMP = METER * 1500;
 
 var ENEMY_MAXDX = METER * 5;
 var ENEMY_ACCEL = ENEMY_MAXDX * 2;
-
-var enemies = [];
-
-
-var LAYER_OBJECT_ENEMIES = 3;
 var LAYER_BACKGROUND = 0;
-
 var LAYER_LADDERS = 2;
-
 var LAYER_OBJECT_TRIGGERS = 4;
 var restart = 0;
-var currentScore = 0;
-var timer = 0;
-
 var bulletImage = document.createElement("img");
 bulletImage.src = "images/3d-bullet-cropped.png";
-var scoreBoard = document.createElement("img");
-scoreBoard.src = "images/score-board.png";
 
 //collision array
 var cells = [];
@@ -96,32 +84,14 @@ function initialise()
 				idx++;
 			}
 		}
-		 LAYER_COUNT = 3;
-		 LAYER_PLATFORMS = 1;
-		//create enemies
-		idx = 0;
-		for(var y = 0; y < level.layers[LAYER_OBJECT_ENEMIES].height; y++)
-		{
-			for(var x = 0; x < level.layers[LAYER_OBJECT_ENEMIES].width; x++)
-			{
-				if(level.layers[LAYER_OBJECT_ENEMIES].data[idx] !=0)
-				{
-					var px = tileToPixel(x);
-					var py = tileToPixel(y);
-					var e = new Enemy(px, py);
-					enemies.push(e);
-				}
-				idx++;
-			}
-		}
+
 	}
 }
 
 initialise();
 var player = new Player();
 var keyboard = new Keyboard();
-var bullet = new Bullet();
-var enemies = new Enemy();
+
 
 var music = new Howl(
 {
@@ -132,41 +102,12 @@ var music = new Howl(
 });
 
 //UNCOMMENT FOR MUSIC
-//music.play();
+music.play();
 var cam_x = 0;
 var cam_y = 0;
 
-function bullets() {
-	var hit=false;
-	for(var i=0; i<bullets.length; i++)
-	{
-		bullets[i].update(deltaTime);
-		if( bullets[i].position.x - worldOffsetX < 0 ||
-			bullets[i].position.x - worldOffsetX > SCREEN_WIDTH)
-		{
-			hit = true;
-		}
-		for(var j=0; j<enemies.length; j++)
-		{
-			if(intersects( bullets[i].position.x, bullets[i].position.y, TILE, TILE,
-					enemies[j].position.x, enemies[j].position.y, TILE, TILE) == true)
-			{
-				// kill both the bullet and the enemy
-				enemies.splice(j, 1);
-				hit = true;
-				// increment the player score
-				score += 1;
-				break;
-			}
-		}
-		if(hit == true)
-		{
-			bullets.splice(i, 1);
-			break;
-		}
-	}
-}
 
+//RUN
 function run()
 {
 	context.fillStyle = "#ccc";		
@@ -180,9 +121,9 @@ function run()
 		context.fillStyle = "#f00";
 		context.font="14px Arial";
 		context.fillText("GAME OVER ", 5, 20, 100);
-		context.fillText("Press spacebar to restart", 5, 100);
+		context.fillText("Press ENTER to restart", 5, 100);
 
-		if (keyboard.isKeyDown(keyboard.KEY_SPACE))
+		if (keyboard.isKeyDown(keyboard.KEY_ENTER))
 		{
 			player.lives = 3;
 		}
@@ -190,79 +131,18 @@ function run()
 	}
 	else
 	{
-		//bullets();
 		player.update(deltaTime);
 		cam_x = bound(player.x - canvas.width / 2, 0, MAP.tw * TILE - canvas.width);
 		cam_y = bound(player.y - canvas.height / 2, 0, MAP.th * TILE - canvas.height);
 		restart = 0;
 
-		//ENEMIES
-		for (var i = 0; i < enemies.length; i++) {
-			enemies[i].update(deltaTime);
-		}
 		drawMap(cam_x, cam_y);
-
-		//BULLETS
-		var hit=false;
-		for(var i=0; i<bullets.length; i++)
-		{
-			bullets[i].update(deltaTime);
-			if( bullets[i].position.x - worldOffsetX < 0 ||
-				bullets[i].position.x - worldOffsetX > SCREEN_WIDTH)
-			{
-				hit = true;
-			}
-			for(var j=0; j<enemies.length; j++)
-			{
-				if(intersects( bullets[i].position.x, bullets[i].position.y, TILE, TILE,
-						enemies[j].position.x, enemies[j].position.y, TILE, TILE) == true)
-				{
-					// kill both the bullet and the enemy
-					enemies.splice(j, 1);
-					hit = true;
-					// increment the player score
-					score += 1;
-					break;
-				}
-			}
-			if(hit == true)
-			{
-				bullets.splice(i, 1);
-				break;
-			}
-		}
-
-        idxx = 0;
-        for(var y = 0; y < level.layers[LAYER_OBJECT_ENEMIES].height; y++) {
-            for(var x = 0; x < level.layers[LAYER_OBJECT_ENEMIES].width; x++) {
-                if(level.layers[LAYER_OBJECT_ENEMIES].data[idxx] != 0) {
-                    var px = tileToPixel(x);
-                    var py = tileToPixel(y);
-                    var e = new Enemy(px, py);
-                    enemies.push(e);
-                }
-                idxx++;
-            }
-        }
-
-		for (var i = 0; i < enemies.length; i++) {
-			enemies[i].draw(cam_x, cam_y);
-		}
 		player.draw(cam_x, cam_y);
-		bullet.update(deltaTime);
-		bullet.draw();
-		// draw the bullet count
+
 		context.fillStyle = "yellow";
 		context.font="20px Arial";
-		context.fillText(bulletCount, (canvas.width *.92), 28, 100);
+		context.fillText(globalBulletCounter, (canvas.width *.92), 28, 100);
 		context.drawImage(bulletImage, (canvas.width *.88), 10, 20, 20);
-		context.drawImage(scoreBoard, (canvas.width/1.25)-(scoreBoard.width/2), 0);
-		context.font="10px Arial";
-		scoreLabel = "SCORE";
-		scoreWidth = Math.floor(context.measureText(scoreLabel)/2) ;
-		context.fillText(scoreLabel, (canvas.width/1.25)-17, 10);
-		context.font="35px Arial";
-		context.fillText(currentScore, (canvas.width/1.25)-7.5, 40);
 
 
 

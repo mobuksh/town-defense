@@ -10,6 +10,7 @@ var ANIM_WALK_RIGHT = 5;
 var ANIM_SHOOT_LEFT = 6;
 var ANIM_SHOOT_RIGHT = 7;
 var ANIM_MAX = 8;
+var globalBulletCounter = 50;
 
 var Player = function() {	
 	// delete me
@@ -76,11 +77,7 @@ var Player = function() {
         {
             urls : ["audio/die-sound.mp3"],
             buffer : true,
-            volume : 1//,
-            //onend: function()
-            //{
-            //	self.jump_sfx_isPlaying = false;
-            //}
+            volume : 1
         });
 	
 	this.lives = 3;
@@ -100,12 +97,23 @@ var Player = function() {
 		}
 	});
 	////////////////////////////////////////
+	this.cur_bullet_index = 0;
+	this.max_bullets = 50;
+	this.bullets = [];
+	for(var i = 0; i < this.max_bullets; i++)
+	{
+		this.bullets[i] = new Bullet();
+
+	}
+	this.shoot_timer = 0.2;
+	this.shoot_cooldown = 0.0;
+
 };
 
 Player.prototype.update = function(deltaTime)
 {
 	this.sprite.update(deltaTime);
-
+    this.bulletCounter = 0;
 	var left = false;
 	var right = false;
 	var jump = false;
@@ -158,7 +166,7 @@ Player.prototype.update = function(deltaTime)
 
 	}
 
-	if (keyboard.isKeyDown(keyboard.KEY_SHIFT) && !this.jumping && bulletCount > 0)
+	if (keyboard.isKeyDown(keyboard.KEY_SHIFT) && !this.jumping && (globalBulletCounter > 0))
 	{
 			this.shooting = true;
 			if (this.direction == LEFT)
@@ -171,14 +179,38 @@ Player.prototype.update = function(deltaTime)
 				if (this.sprite.currentAnimation != ANIM_SHOOT_RIGHT)
 					this.sprite.setAnimation(ANIM_SHOOT_RIGHT);
 			}
-				bulletCount--;
+
+        if(this.shoot_cooldown <= 0.0)
+        {
+            var jitter = Math.random() * 0.2 - 0.1;
+            if(this.direction == left)
+                this.bullets[this.cur_bullet_index].fire(this.x, this.y, -1, jitter);
+            else
+                this.bullets[this.cur_bullet_index].fire(this.x, this.y, 1, jitter);
+            this.shoot_cooldown = this.shoot_timer;
+
+            this.cur_bullet_index++;
+            globalBulletCounter--;
+
+
+            if(this.cur_bullet_index >= this.max_bullets)
+                this.cur_bullet_index = 0;
+        }
 	}
-	else if (this.shooting)
-	{
-		this.shooting = false;
-	}
-	
-	
+    else
+    {
+        this.shooting = false;
+    }
+
+	if(this.shoot_cooldown > 0.0)
+		this.shoot_cooldown -= deltaTime;
+
+    for(var i = 0; i < this.max_bullets; i++)
+    {
+        this.bullets[i].update(deltaTime);
+
+    }
+
 	var wasleft = (this.velocity_x < 0);
 	var wasright = (this.velocity_x > 0);
 	var falling = this.falling;
@@ -294,7 +326,12 @@ Player.prototype.update = function(deltaTime)
 Player.prototype.draw = function(cam_x, cam_y)
 {
 	this.sprite.draw(context, this.x - cam_x, this.y - cam_y);
-		
+
+    for (i = 0; i < this.max_bullets; i++)
+    {
+        this.bullets[i].draw(cam_x,cam_y);
+    }
+
 	for (var i = 0; i < this.lives; i++)
 	{
 		context.save();
@@ -304,6 +341,7 @@ Player.prototype.draw = function(cam_x, cam_y)
 				this.lives_image.width/4, this.lives_image.height/4);
 		context.restore();
 	}
+
 }
 
 

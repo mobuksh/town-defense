@@ -1,39 +1,50 @@
 /**
- * Created by mrcheese on 27/09/15.
+ * Created by mrcheese on 29/09/15.
  */
 
- var bulletCount = 100;
- var Bullet = function (x,y, moveRight)
+var BULLET_SPEED = 1000;
+
+var Bullet = function ()
 {
-    this.sprite = new Sprite("images/bullet.png");
-    this.sprite.buildAnimation(1,1,32,32,-1,[0]);
-    this.sprite.setAnimationOffset(0,0,0);
-    this.sprite.setLoop(0, false);
-
-    this.position = new Vector2();
-    this.position.set(x,y);
-
-    this.velocity = new Vector2();
-
-    this.moveRight = moveRight;
-    if(this.moveRight == true)
-    {
-        this.velocity.set(MAXDX * 2, 0);
-    }
-    else
-    {
-        this.velocity.set(-MAXDX * 2, 0);
-    }
-};
-
-Bullet.prototype.update = function(deltaTime)
-{
-        this.sprite.update(deltaTime);
-        this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
+    this.image = document.createElement("img"),
+    this.image.src = "images/bullet.png";
+    this.x = 0;
+    this.y = 0;
+    this.velocity_x = 0;
+    this.velocity_y = 0;
+    this.dead = true;
 }
 
-Bullet.prototype.draw = function()
+Bullet.prototype.update = function (deltaTime)
 {
-    var screenX = this.position.x; //- worldOffsetX;
-    this.sprite.draw(context, screenX, this.position.y);
+    if (!this.dead) {
+        this.x += this.velocity_x * deltaTime * BULLET_SPEED;
+        this.y += this.velocity_y * deltaTime * BULLET_SPEED;
+
+        if(this.x < 0 || this.x > MAP.tw * TILE || this.y < 0 || this.y > MAP.th * TILE)
+        {
+            this.dead = true;
+        }
+
+    }
+}
+
+Bullet.prototype.fire = function(origin_x, origin_y, dir_x, dir_y){
+    this.x = origin_x;
+    this.y = origin_y;
+    this.velocity_x = dir_x;
+    this.velocity_y = dir_y;
+    this.dead = false;
+
+}
+
+Bullet.prototype.draw = function (cam_x, cam_y)
+{
+    if (!this.dead) {
+       context.save();
+        context.translate(this.x - cam_x,
+        this.y - cam_y);
+        context.drawImage(this.image, -this.image.width / 2, this.image.height/2);
+        context.restore();
+    }
 }
