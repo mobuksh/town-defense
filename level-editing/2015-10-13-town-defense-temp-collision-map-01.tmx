@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="35" tileheight="35" nextobjectid="1">
+ <tileset firstgid="1" name="tileset" tilewidth="35" tileheight="35" spacing="1" margin="1" tilecount="196">
+  <image source="tileset.gif" width="512" height="512"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgYYDWKR/EoHsWjeBSP4lE8TDEAQbiBJQ==
+  </data>
+ </layer>
+ <layer name="road" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhYkDJq74i1N4UMTC17SQGj9o7aO2ov/e2lRjlAqr3UBKP2jtoLAEGGFeE=
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg4oA2ldUbtHTB7dSjAlNpLDqCWvdokYGrbSwwYtXfU3sFkL678T0t7KVVDjr3ElgfUtJeaYNTewWUvAItsEwk=
+  </data>
+ </layer>
+</map>
