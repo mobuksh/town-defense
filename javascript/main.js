@@ -95,14 +95,14 @@ var keyboard = new Keyboard();
 
 var music = new Howl(
 {
-	urls: ["audio/background.ogg"],
+	urls: [""],
 	loop: true,
 	buffer: true,
 	volume: 0.5
 });
 
-//UNCOMMENT FOR MUSIC
-music.play();
+//UNCOMMENT FOR MUSIC, add new music first 
+//music.play();
 var cam_x = 0;
 var cam_y = 0;
 
