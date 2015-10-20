@@ -111,10 +111,9 @@ function run()
 	var deltaTime = getDeltaTime();
 
 	drawMap(0,0);
+	drawTowerInventory();
 
 	if (mouselistener.mouseDown == true) {
-		moMouseEvent = mouselistener.mouseDown;
-
 		context.fillStyle = "#f00";
 		context.font="14px Arial";
 		context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 20);
