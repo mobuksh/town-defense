@@ -91,7 +91,7 @@ function initialise()
 initialise();
 var player = new Player();
 var keyboard = new Keyboard();
-
+var mouselistener = new Mouse();
 
 var music = new Howl(
 {
@@ -102,10 +102,10 @@ var music = new Howl(
 });
 
 //UNCOMMENT FOR MUSIC
-music.play();
+//music.play();
 var cam_x = 0;
 var cam_y = 0;
-
+var moMouseEvent = "";
 
 //RUN
 function run()
@@ -154,7 +154,13 @@ function run()
 			fps = fpsCount;
 			fpsCount = 0;
 		}
+		if (mouselistener.mouseDown == true) {
+			moMouseEvent = mouselistener.mouseDown;
 
+			context.fillStyle = "#f00";
+			context.font="14px Arial";
+			context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 20);
+		}
 		// draw the FPS
 		//context.fillStyle = "#f00";
 		//context.font="14px Arial";
