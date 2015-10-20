@@ -31,9 +31,7 @@ function getDeltaTime()
 // some variables to calculate the Frames Per Second (FPS - this tells use
 // how fast our game is running, and allows us to make the game run at a 
 // constant speed)
-var fps = 0;
-var fpsCount = 0;
-var fpsTime = 0;
+
 
 var METER = TILE;
 
@@ -53,8 +51,7 @@ var LAYER_BACKGROUND = 0;
 var LAYER_LADDERS = 2;
 var LAYER_OBJECT_TRIGGERS = 4;
 var restart = 0;
-var bulletImage = document.createElement("img");
-bulletImage.src = "images/3d-bullet-cropped.png";
+
 
 //collision array
 var cells = [];
@@ -89,7 +86,7 @@ function initialise()
 }
 
 initialise();
-var player = new Player();
+
 var keyboard = new Keyboard();
 
 
@@ -103,8 +100,6 @@ var music = new Howl(
 
 //UNCOMMENT FOR MUSIC, add new music first 
 //music.play();
-var cam_x = 0;
-var cam_y = 0;
 
 
 //RUN
@@ -115,51 +110,10 @@ function run()
 	
 	var deltaTime = getDeltaTime();
 
-	if(player.lives < 1)
-	{
-		restart = 1;
-		context.fillStyle = "#f00";
-		context.font="14px Arial";
-		context.fillText("GAME OVER ", 5, 20, 100);
-		context.fillText("Press ENTER to restart", 5, 100);
+	drawMap(0,0);
 
-		if (keyboard.isKeyDown(keyboard.KEY_ENTER))
-		{
-			player.lives = 3;
-		}
-
-	}
-	else
-	{
-		player.update(deltaTime);
-		cam_x = bound(player.x - canvas.width / 2, 0, MAP.tw * TILE - canvas.width);
-		cam_y = bound(player.y - canvas.height / 2, 0, MAP.th * TILE - canvas.height);
-		restart = 0;
-
-		drawMap(cam_x, cam_y);
-		player.draw(cam_x, cam_y);
-
-		context.fillStyle = "yellow";
-		context.font="20px Arial";
-		context.fillText(globalBulletCounter, (canvas.width *.92), 28, 100);
-		context.drawImage(bulletImage, (canvas.width *.88), 10, 20, 20);
-
-
-
-		// update the frame counter
-		fpsTime += deltaTime;
-		fpsCount++;
-		if (fpsTime >= 1) {
-			fpsTime -= 1;
-			fps = fpsCount;
-			fpsCount = 0;
-		}
-
-		// draw the FPS
-		//context.fillStyle = "#f00";
-		//context.font="14px Arial";
-		//context.fillText("FPS: " + fps, 5, 20, 100);
-	}
+	
+	
 }
 
 
