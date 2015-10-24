@@ -50,10 +50,9 @@ Mouse.prototype.onMouseUp = function(evt)
 {
     this.mouseDown = false;
     this.mouseUp = true;
-    //console.log(evt);
-
-    //this.keys[evt.keyCode] = false;
+    //testTower.firstTower.click = false;
 };
+
 Mouse.prototype.onMouseMove = function(evt)
 {
     this.mouseMove = true;

@@ -89,6 +89,7 @@ initialise();
 
 var keyboard = new Keyboard();
 var mouselistener = new Mouse();
+var testTower = new Tower();
 
 var music = new Howl(
 {
@@ -111,13 +112,16 @@ function run()
 	var deltaTime = getDeltaTime();
 
 	drawMap(0,0);
-	drawTowerInventory();
+
+	//drawTowerInventory();
 
 	if (mouselistener.mouseDown == true) {
 		context.fillStyle = "#f00";
 		context.font="14px Arial";
 		context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 20);
 	}
+	testTower.update();
+	testTower.draw();
 	
 }
 
