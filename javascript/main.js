@@ -51,6 +51,9 @@ var LAYER_BACKGROUND = 0;
 var LAYER_LADDERS = 2;
 var LAYER_OBJECT_TRIGGERS = 4;
 var restart = 0;
+var SCREEN_WIDTH = canvas.width ;
+
+var SCREEN_HEIGHT = canvas.height;
 
 
 //collision array

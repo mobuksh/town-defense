@@ -116,7 +116,7 @@ function cellAtPixelCoord(layer, x, y)
 {
 	if (x < 0 || x > SCREEN_WIDTH || y < 0)
 		return 1;
-	
+
 	if (y > SCREEN_HEIGHT)
 		return 0;
 	
