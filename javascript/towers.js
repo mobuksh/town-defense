@@ -7,9 +7,9 @@ var Tower = function() {
     this.inventoryTowers = [];
     this.inventoryTowers[0] = { towerType: 0, imageIcon : document.createElement("img"), left: 0, top: 0, click: false, width: 70, height: 70 };
     this.inventoryTowers[0].imageIcon.src = "images/tower/green-castle.png";
-    this.inventoryTowers[1] = { towerType: 1, imageIcon : document.createElement("img"), left: 40 , top: 0, click: false, width: 70, height: 70 };
+    this.inventoryTowers[1] = { towerType: 1, imageIcon : document.createElement("img"), left: 105 , top: 0, click: false, width: 70, height: 70 };
     this.inventoryTowers[1].imageIcon.src = "images/tower/red-castle.png";
-    this.inventoryTowers[2] = { towerType: 2, imageIcon : document.createElement("img"), left: 80, top: 0, click: false, width: 70, height: 70 };
+    this.inventoryTowers[2] = { towerType: 2, imageIcon : document.createElement("img"), left: 200, top: 0, click: false, width: 70, height: 70 };
     this.inventoryTowers[2].imageIcon.src = "images/tower/white-castle.png";
 
     // make all of the inventory items display at the same horizon
@@ -41,7 +41,7 @@ Tower.prototype.update = function() {
         if (mouselistener.mouseDown === true) {
             console.log("how many towers ", this.inventoryTowers.length)
             // if the user is clicking a tower, set inventoryTowers[i] click to 'true'
-            for (var i = 0; i < this.inventoryTowers.length - 1; i++) {
+            for (var i = 0; i < this.inventoryTowers.length ; i++) {
             console.log("i: ", i)
                 // if mouse is inside width of tower image
                 if ((mouselistener.page_x > this.inventoryTowers[i].left) && (mouselistener.page_x < (this.inventoryTowers[i].left + this.inventoryTowers[i].width))) {
@@ -57,24 +57,23 @@ Tower.prototype.update = function() {
             }
         } else {
             // if the user is clicking a tower, set inventoryTowers[i] click to 'true'
-            for (var i = 0; i < this.inventoryTowers.length -1; i++) {
+            for (var i = 0; i < this.inventoryTowers.length ; i++) {
                 this.inventoryTowers[i].click = false;
-
-                this.inventoryTowers[i].top = canvas.height - this.inventoryTowers[i].height;
+                this.inventoryTowers[i].top = this.topOfTowers;
 
             }
             this.inventoryTowers[0].left = 0;
-            this.inventoryTowers[1].left = 50;
-            this.inventoryTowers[2].left = 80;
+            this.inventoryTowers[1].left = 105;
+            this.inventoryTowers[2].left = 200;
         }
-    for (var i = 0; i < this.inventoryTowers.length -1; i++) {
+    for (var i = 0; i < this.inventoryTowers.length ; i++) {
 
     if (this.inventoryTowers[i].click === true) {
         this.inventoryTowers[i].left = mouselistener.page_x - (this.inventoryTowers[i].width / 2 );
         this.inventoryTowers[i].top = mouselistener.page_y - (this.inventoryTowers[i].height / 2 );
         this.addNewTowerOnRelease = getTileAtPixel(mouselistener.page_x, mouselistener.page_y);
 
-        console.log(this.addNewTowerOnRelease.across, this.addNewTowerOnRelease.high);
+        console.log("across: ", this.addNewTowerOnRelease.across, "high: ", this.addNewTowerOnRelease.high);
 
         //console.log(cellAtPixelCoord(1, mouselistener.page_x, mouselistener.page_y))
     }
@@ -118,6 +117,7 @@ Tower.prototype.draw = function() {
 
     // draw all towers that have been dragged out onto the map
     for (var i = 0; i < this.allTowers.length; i++) {
+        console.log("tower click: ", this.towerClicked)
         if (this.allTowers[i].towerType === 0) {
             context.drawImage(this.inventoryTowers[0].imageIcon, this.allTowers[i].x, this.allTowers[i].y, 35, 35);
         } else if (this.allTowers[i].towerType === 1) {
@@ -131,7 +131,7 @@ Tower.prototype.draw = function() {
     // when user clicks on an inventory tower, draw it as it is dragged over the map for placement
     for (var i = 0; i < this.inventoryTowers.length; i++) {
         if (this.inventoryTowers[i].click === true) {
-            context.drawImage(this.inventoryTowers[i].imageIcon, this.inventoryTowers[i].left + TILE * 1.5, this.inventoryTowers[i].top, this.inventoryTowers[i].width, this.inventoryTowers[i].height);
+            context.drawImage(this.inventoryTowers[i].imageIcon, this.inventoryTowers[i].left + (TILE * 1.75), this.inventoryTowers[i].top, this.inventoryTowers[i].width, this.inventoryTowers[i].height);
             console.log("drawn extra towers");
 
             context.beginPath();
@@ -147,9 +147,9 @@ Tower.prototype.draw = function() {
 
         } else {
             // else if the user is not dragging items onto the map, draw the inventory tower in its original position
-            context.drawImage(this.inventoryTowers[0].imageIcon, this.inventoryTowers[0].left, this.inventoryTowers[0].top, this.inventoryTowers[0].width, this.inventoryTowers[0].height);
-            context.drawImage(this.inventoryTowers[1].imageIcon, this.inventoryTowers[1].left + this.inventoryTowers[1].width, this.inventoryTowers[1].top, this.inventoryTowers[1].width, this.inventoryTowers[1].height);
-            context.drawImage(this.inventoryTowers[2].imageIcon, this.inventoryTowers[2].left + this.inventoryTowers[2].width + this.inventoryTowers[2].width, this.inventoryTowers[2].top, this.inventoryTowers[2].width, this.inventoryTowers[2].height);
+            context.drawImage(this.inventoryTowers[i].imageIcon, this.inventoryTowers[i].left, this.inventoryTowers[i].top, this.inventoryTowers[i].width, this.inventoryTowers[i].height);
+            //context.drawImage(this.inventoryTowers[1].imageIcon, this.inventoryTowers[1].left + this.inventoryTowers[1].width, this.inventoryTowers[1].top, this.inventoryTowers[1].width, this.inventoryTowers[1].height);
+            //context.drawImage(this.inventoryTowers[2].imageIcon, this.inventoryTowers[2].left + this.inventoryTowers[2].width + this.inventoryTowers[2].width, this.inventoryTowers[2].top, this.inventoryTowers[2].width, this.inventoryTowers[2].height);
 
             //console.log("drawn");
 

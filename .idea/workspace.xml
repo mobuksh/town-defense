@@ -38,8 +38,8 @@
       <file leaf-file-name="towers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/javascript/towers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.80368096">
-              <caret line="67" column="46" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
+            <state vertical-scroll-proportion="2.6503067">
+              <caret line="144" column="29" selection-start-line="144" selection-start-column="29" selection-end-line="144" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -339,7 +339,13 @@
       <option name="project" value="LOCAL" />
       <updated>1445852847363</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="1st and second tower are starting to work, still buggy - two towers draw on dragging event instead of one. Towers are being detected and drawn in the wrong places.">
+      <created>1445857544791</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1445857544791</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -385,7 +391,8 @@
     <MESSAGE value="Towers: basic functionality for placing towers on map now works. Need to add functionality for more towers and restricting of tower placement to allowed grid positions (based of level data)." />
     <MESSAGE value="Towers: added two more types of towers and object array basics. Missing functionality: Need to make extra towers draggable, and drawable when placed on map." />
     <MESSAGE value="+ tower images that were missed in the previous commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ tower images that were missed in the previous commit" />
+    <MESSAGE value="1st and second tower are starting to work, still buggy - two towers draw on dragging event instead of one. Towers are being detected and drawn in the wrong places." />
+    <option name="LAST_COMMIT_MESSAGE" value="1st and second tower are starting to work, still buggy - two towers draw on dragging event instead of one. Towers are being detected and drawn in the wrong places." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -636,8 +643,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/javascript/towers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.80368096">
-          <caret line="67" column="46" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
+        <state vertical-scroll-proportion="2.6503067">
+          <caret line="144" column="29" selection-start-line="144" selection-start-column="29" selection-end-line="144" selection-end-column="29" />
           <folding />
         </state>
       </provider>
