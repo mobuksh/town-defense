@@ -3,24 +3,23 @@
  */
 
 var Tower = function() {
-//create tower positions
-    this.firstTower = new Image();
-    this.firstTower.src = "images/tower/optimised-temporary-tower.jpg";
-    this.firstTower.click = false;
-    this.firstTower.height = 70;
-    this.firstTower.width = 35;
-    this.firstTower.left = 0;
-    this.firstTower.top = canvas.height - this.firstTower.height;
-    this.drawTower = false;
+    //create 3 types of towers
+    this.firstTower = { imageIcon : document.createElement("img"), left: 0, top: 0, click: false, width: 70, height: 70 };
+    this.firstTower.imageIcon.src = "images/tower/green-castle.png";
+    this.secondTower = { imageIcon : document.createElement("img"), left: 0, top: 0, click: false, width: 70, height: 70 };
+    this.secondTower.imageIcon.src = "images/tower/red-castle.png";
+    this.thirdTower = { imageIcon : document.createElement("img"), left: 0, top: 0, click: false, width: 70, height: 70 };
+    this.thirdTower.imageIcon.src = "images/tower/white-castle.png";
+    this.firstTower.top,this.secondTower.top,this.thirdTower.top  = canvas.height - this.firstTower.height;
     this.allTowers = [];
-    this.testShooterTower = [];
 
 
 }
 
 Tower.prototype.update = function() {
     var self = this;
-    this.towerCounter = 0;
+
+    // if the user is clicking on the first tower, set firstTower click to 'true'
     if (mouselistener.mouseDown === true) {
         if ((mouselistener.page_x > this.firstTower.left) && (mouselistener.page_x < (this.firstTower.left + this.firstTower.width)) ) {
             if ((mouselistener.page_y > this.firstTower.top) && (mouselistener.page_y < (this.firstTower.top + this.firstTower.height)) ) {
@@ -28,6 +27,7 @@ Tower.prototype.update = function() {
             }
         }
     } else {
+
         this.firstTower.click = false;
         this.firstTower.left = 0;
         this.firstTower.top = canvas.height - this.firstTower.height;
@@ -59,14 +59,14 @@ Tower.prototype.update = function() {
     //console.log("cheese" + this.allTowers[0][1].x);
     self.addANewTower = function () {
         if (mouselistener.mouseOverCanvas === true ) {
-         drawNewTower(self.addNewTowerOnRelease.across, self.addNewTowerOnRelease.high);
+         drawNewTower(1, self.addNewTowerOnRelease.across, self.addNewTowerOnRelease.high);
             console.log("adding new tower", self.addNewTowerOnRelease.across, self.addNewTowerOnRelease.high);
         }
     }
 
-    function drawNewTower(x,y){
+    function drawNewTower(towertype, x, y){
         //draw a new tower
-        self.allTowers.push({x: (x * 35), y: ((y - 1) * 35)});
+        self.allTowers.push({towerType: towertype, x: (x * 35), y: ((y) * 35)});
         console.log("tower added", x, y)
     }
 }
@@ -77,23 +77,37 @@ Tower.prototype.update = function() {
 
 Tower.prototype.draw = function() {
     context.save();
-    context.drawImage(this.firstTower, this.firstTower.left, this.firstTower.top , this.firstTower.width, this.firstTower.height);
+
+    // draw all towers that have been dragged out onto the map
     for (var i = 0; i < this.allTowers.length; i++) {
-        context.drawImage(this.firstTower, this.allTowers[i].x, this.allTowers[i].y, this.firstTower.width, this.firstTower.height);
+        context.drawImage(this.firstTower.imageIcon, this.allTowers[i].x, this.allTowers[i].y, 35, 35);
+        console.log("drawn");
     }
+
+    // when user clicks on an inventory tower, draw it as it is dragged over the map for placement
     if (this.firstTower.click === true) {
+        context.drawImage(this.firstTower.imageIcon, this.firstTower.left+TILE*1.5, this.firstTower.top , this.firstTower.width, this.firstTower.height);
+        console.log("drawn extra towers");
 
         context.beginPath();
         context.rect(this.addNewTowerOnRelease.across * 35, this.addNewTowerOnRelease.high * 35, TILE,TILE);
         context.fillStyle="green";
-        context.globalAlpha = 0.25;
-        context.strokeStyle = "white";
-        context.lineWidth = 50;
+        context.globalAlpha = 0.5;
+        //context.strokeStyle = "white";
+        //context.lineWidth = 50;
 
         context.fill();
         context.stroke();
 
 
+
+    } else {
+        // else if the user is not dragging items onto the map, draw the inventory tower in its original position
+        context.drawImage(this.firstTower.imageIcon, this.firstTower.left, this.firstTower.top , this.firstTower.width, this.firstTower.height);
+        context.drawImage(this.secondTower.imageIcon, this.firstTower.left + this.firstTower.width, this.firstTower.top , this.secondTower.width, this.secondTower.height);
+        context.drawImage(this.thirdTower.imageIcon, this.firstTower.left + this.firstTower.width + this.secondTower.width, this.firstTower.top , this.thirdTower.width, this.thirdTower.height);
+
+        //console.log("drawn");
 
     }
 
