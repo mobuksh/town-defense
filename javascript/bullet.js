@@ -35,7 +35,6 @@ Bullet.prototype.fire = function(origin_x, origin_y, dir_x, dir_y){
     this.velocity_x = dir_x;
     this.velocity_y = dir_y;
     this.dead = false;
-
 }
 
 Bullet.prototype.draw = function (cam_x, cam_y)

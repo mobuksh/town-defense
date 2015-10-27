@@ -93,6 +93,7 @@ initialise();
 var keyboard = new Keyboard();
 var mouselistener = new Mouse();
 var testTower = new Tower();
+var bullet = new Bullet();
 
 var music = new Howl(
 {
@@ -109,7 +110,7 @@ var music = new Howl(
 //RUN
 function run()
 {
-	context.fillStyle = "#ccc";		
+	context.fillStyle = "green";
 	context.fillRect(0, 0, canvas.width, canvas.height);
 	
 	var deltaTime = getDeltaTime();
@@ -123,6 +124,11 @@ function run()
 		context.font="14px Arial";
 		context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 20);
 	}
+
+	bullet.fire(mouselistener.page_x, mouselistener.page_y, 5, 5 );
+	bullet.update(deltaTime);
+	bullet.draw(deltaTime);
+
 	testTower.update();
 	testTower.draw();
 	
