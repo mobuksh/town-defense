@@ -55,7 +55,7 @@ var SCREEN_WIDTH = canvas.width ;
 
 var SCREEN_HEIGHT = canvas.height;
 
-
+var cur_bullet_index = 0;
 //collision array
 var cells = [];
 function initialise()
@@ -125,12 +125,18 @@ function run()
 		context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 20);
 	}
 
-	bullet.fire(mouselistener.page_x, mouselistener.page_y, 5, 5 );
+	// BULLETS
 	bullet.update(deltaTime);
-	bullet.draw(deltaTime);
+	var jitter = Math.random() * 0.2 - 0.1;
 
+	bullet.fire(100, 100, -1, jitter);
+	//bullet.fire(mouselistener.page_x, mouselistener.page_y, 5, 5 );
+
+	bullet.draw(10,10);
+
+	//TOWERS
 	testTower.update();
-	testTower.draw();
+	testTower.draw(mouselistener.page_x, mouselistener.page_y);
 	
 }
 
