@@ -105,7 +105,9 @@ var music = new Howl(
 
 //UNCOMMENT FOR MUSIC, add new music first 
 //music.play();
+var jitter = Math.random() * 0.2 - 0.1;
 
+bullet.fire(100, 100, 1, jitter);
 
 //RUN
 function run()
@@ -127,9 +129,7 @@ function run()
 
 	// BULLETS
 	bullet.update(deltaTime);
-	var jitter = Math.random() * 0.2 - 0.1;
 
-	bullet.fire(100, 100, -1, jitter);
 	//bullet.fire(mouselistener.page_x, mouselistener.page_y, 5, 5 );
 
 	bullet.draw(10,10);

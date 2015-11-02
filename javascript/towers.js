@@ -36,32 +36,37 @@ var Tower = function() {
 
 Tower.prototype.update = function() {
     var self = this;
+    this.aTowerisClicked = false;
     this.towerClicked = "";
 
-        if (mouselistener.mouseDown === true) {
+        if (mouselistener.mouseDown === true && this.aTowerisClicked === false) {
             //console.log("how many towers ", this.inventoryTowers.length)
             // if the user is clicking a tower, set inventoryTowers[i] click to 'true'
             for (var i = 0; i < this.inventoryTowers.length ; i++) {
             //console.log("i: ", i)
                 // if mouse is inside width of tower image
-                if ((mouselistener.page_x > this.inventoryTowers[i].left) && (mouselistener.page_x < (this.inventoryTowers[i].left + this.inventoryTowers[i].width))) {
+                if ((mouselistener.page_x > this.inventoryTowers[i].left) && this.aTowerisClicked === false && (mouselistener.page_x < (this.inventoryTowers[i].left + this.inventoryTowers[i].width))) {
                     //console.log("click detected, inside width");
                     // if mouse is within height of tower image
-                    if ((mouselistener.page_y > this.inventoryTowers[i].top) && (mouselistener.page_y < (this.inventoryTowers[i].top + this.inventoryTowers[i].height))) {
+                    if ((mouselistener.page_y > this.inventoryTowers[i].top) && this.aTowerisClicked === false && (mouselistener.page_y < (this.inventoryTowers[i].top + this.inventoryTowers[i].height))) {
                         //console.log("click detected, inside height");
+                        this.aTowerisClicked = true;
                         this.inventoryTowers[i].click = true;
                         this.towerClicked = i;
+
                         //console.log("click = true");
                     }
                 }
             }
         } else {
             // if the user is clicking a tower, set inventoryTowers[i] click to 'true'
+            //this.aTowerisClicked = false;
             for (var i = 0; i < this.inventoryTowers.length ; i++) {
                 this.inventoryTowers[i].click = false;
                 this.inventoryTowers[i].top = this.topOfTowers;
 
             }
+
             this.inventoryTowers[0].left = 0;
             this.inventoryTowers[1].left = 105;
             this.inventoryTowers[2].left = 200;
