@@ -2,13 +2,15 @@
  * Created by mobuksh on 11/10/15.
  */
 
+
 var Mouse = function() {
     var self = this;
 
     window.addEventListener('mousedown', function(evt) { self.onMouseDown(evt); }, false);
     window.addEventListener('mouseup', function(evt) { self.onMouseUp(evt); }, false);
-    window.addEventListener('mousover', function(evt) { self.onMouseOver(evt); }, false);
-    window.addEventListener('mouseout', function(evt) { self.onMouseOut(evt); }, false);
+    window.addEventListener('mousemove', function(evt) { self.onMouseMove(evt); }, false);
+    canvas.addEventListener('mouseover', function(evt) { self.onMouseOver(evt); }, false);
+    canvas.addEventListener('mouseout', function(evt) { self.onMouseOut(evt); }, false);
 
     this.mouseListeners = new Array();
 
@@ -34,19 +36,52 @@ var Mouse = function() {
 
 Mouse.prototype.onMouseDown = function(evt)
 {
+    if (this.mouseOverCanvas === true) {
+        this.mouseDown = true;
+    }
+    //this.page_x = evt.pageX;
+    //this.page_y = evt.pageY;
+
+    //console.log(evt);
     //this.keys[evt.keyCode] = true;
 };
 
 Mouse.prototype.onMouseUp = function(evt)
 {
-    //this.keys[evt.keyCode] = false;
+    this.mouseDown = false;
+    this.mouseUp = true;
+    //testTower.firstTower.click = false;
+    testTower.addANewTower();
+    console.log("mouse up")
 };
+
+Mouse.prototype.onMouseMove = function(evt)
+{
+    this.mouseMove = true;
+    this.mouseOnCanvasX = evt.pageX - canvas.offsetLeft;
+    this.mouseOnCanvasY = evt.pageY - canvas.offsetTop;
+
+
+    if (this.mouseOverCanvas === true && this.mouseOnCanvasX > 0 && this.mouseOnCanvasX < canvas.width) {
+        this.page_x = evt.pageX - canvas.offsetLeft;
+    }
+
+    if (this.mouseOverCanvas === true && this.mouseOnCanvasY > 0 && this.mouseOnCanvasY < canvas.height) {
+        this.page_y = evt.pageY - canvas.offsetTop;
+    }
+
+    //console.log(evt);
+};
+
 Mouse.prototype.onMouseOver = function(evt)
 {
+    this.mouseOverCanvas = true;
+    console.log(evt);
     //this.keys[evt.keyCode] = false;
 };
 Mouse.prototype.onMouseOut = function(evt)
 {
+    this.mouseOverCanvas = false;
     //this.keys[evt.keyCode] = false;
 };
 
