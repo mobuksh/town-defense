@@ -38,67 +38,44 @@ function pixelToTile(pixel)
 
 Enemy.prototype.update = function() {
 	
-	if (this.x != this.targetX) {
+	if (this.x != this.waypoints_x[this.waypointIndex]) {
 		switch(this.waypointIndex) {
 			case 0:
-			case 2:
 			
 			// Nothing, because it is not advancing an x position.
 			break;
-			
-			case 1:
-			case 3:
+			case 4:
+			case 2:
 			this.x += 1;
 			break;
 
 		}
 	}
 	
-	if (this.y != this.targetY) {
+	if (this.y != this.waypoints_y[this.waypointIndex]) {
 		switch (this.waypointIndex) {
-		case 1:
-		case 3:
+		
+	
+		case 2:
 		// Nothing, because it is not advancing an y position.
 		break;
 		
-		case 0:
-		case 4:
+		case 3:
+		this.y-=1;
+		break;
+		
+		case 1:
+		case 5:
 		this.y+=1;
 		break;
 		
-		case 2:
-		this.y-=1;
-		break;
 		
 		}
 	}
 	
 	
-	if (this.x == this.targetX && this.y == this.targetY) {
-	
-		switch (this.waypointIndex) {
-		//	case 0:
-		//	this.waypointIndex++;
-		//	break;
-			case 1:
-			this.targetX = 8;
-			this.targetY = 12;
-			break;
-			case 2:
-			this.targetX = 8;
-			this.targetY = 3;
-			break;
-			case 3:
-			this.targetX = 20;
-			this.targetY = 3;
-			break;
-			case 4:
-			this.targetX = 20;
-			this.targetY = 17;
-			break;
-		}
-	
-	this.waypointIndex++;
+	if (this.x == this.waypoints_x[this.waypointIndex] && this.y == this.waypoints_y[this.waypointIndex]) {	
+		this.waypointIndex++;
 	}
 }
 
