@@ -178,9 +178,9 @@ function run()
 
 	//bullet.draw(10,10);
 
-	
+		
 	//ENEMIES
-	enemy.update();
+	enemy.update(deltaTime);
 	enemy.draw();
 	
 }

@@ -2,9 +2,11 @@ var Enemy = function(level) {
 	this.type = level;
 	this.health = 100 * level;
 	
-	this.speed = 1;
+	this.speed = 15;
 	this.x = 1;
 	this.y = -5;
+	this.velocity_x = 0;
+	this.velocity_y = 0;
 	
 	this.image = document.createElement("img");
 	
@@ -22,7 +24,8 @@ Enemy.prototype.init_waypoints = function()
 {
 	this.waypoints_x = [1, 1, 8, 8, 20, 20];
 	this.waypoints_y = [-5, 12, 12, 3, 3, 17];
-	
+	this.velocity_x = 2 * 0.1;
+	this.velocity_y = 2 * 0.1;
 	
 }
 
@@ -36,7 +39,7 @@ function pixelToTile(pixel)
 	return Math.floor(pixel/TILE);
 }
 
-Enemy.prototype.update = function() {
+Enemy.prototype.update = function(deltatime) {
 	
 	if (this.x != this.waypoints_x[this.waypointIndex]) {
 		switch(this.waypointIndex) {
@@ -46,7 +49,8 @@ Enemy.prototype.update = function() {
 			break;
 			case 4:
 			case 2:
-			this.x += 1;
+			this.x += this.velocity_x * deltatime * this.speed;
+
 			break;
 
 		}
@@ -61,12 +65,12 @@ Enemy.prototype.update = function() {
 		break;
 		
 		case 3:
-		this.y-=1;
+		this.y-= this.velocity_y * deltatime * this.speed;
 		break;
 		
 		case 1:
 		case 5:
-		this.y+=1;
+		this.y+= this.velocity_y * deltatime * this.speed;
 		break;
 		
 		
