@@ -94,6 +94,7 @@ var keyboard = new Keyboard();
 var mouselistener = new Mouse();
 var testTower = new Tower();
 var bullet = new Bullet();
+var enemy = new Enemy(1);
 
 var music = new Howl(
 {
@@ -112,11 +113,17 @@ console.log(jitter);
 towerShootCount = 0;
 
 
+function pixelToTile(pixel)
+{
+	return Math.floor(pixel/TILE);
+}
+
 //RUN
 function run()
 {
 	context.fillStyle = "green";
 	context.fillRect(0, 0, canvas.width, canvas.height);
+	
 	
 	var deltaTime = getDeltaTime();
 
@@ -128,6 +135,7 @@ function run()
 		context.fillStyle = "#f00";
 		context.font="14px Arial";
 		context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 20);
+		context.fillText("TILE POSITION: " +  pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 40);
 	}
 
 
@@ -170,6 +178,10 @@ function run()
 
 	//bullet.draw(10,10);
 
+		
+	//ENEMIES
+	enemy.update(deltaTime);
+	enemy.draw();
 	
 }
 
