@@ -117,9 +117,12 @@ Tower.prototype.update = function () {
     // add a new tower to the array of towers
     function createNewTower(towertype, x, y) {
 
+        var new_bullet_pool = [];
         for (var i = 0; i < 50; i++) {
-            self.towerBullets[i] = new Bullet();
+            new_bullet_pool[i] = new Bullet();
         }
+
+
 
         //push a new tower into the allTowers array
         self.allTowers.push({
@@ -128,7 +131,7 @@ Tower.prototype.update = function () {
                 y: ((y) * 35),
                 // give each new tower 50 bullets
                 objMaxTowerBullets: this.maxTowerBullets,
-                thisTowerBullets: self.towerBullets
+                thisTowerBullets: new_bullet_pool
 
             }
         );
