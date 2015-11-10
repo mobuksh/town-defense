@@ -128,7 +128,7 @@ function run()
 	var deltaTime = getDeltaTime();
 
 	drawMap(0,0);
-
+	drawhud();
 	//drawTowerInventory();
 
 	if (mouselistener.mouseDown == true) {
