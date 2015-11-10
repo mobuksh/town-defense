@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30e8d38f-32f8-46a0-bc78-20ee0f345f2a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/bullet.js" afterPath="$PROJECT_DIR$/javascript/bullet.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/main.js" afterPath="$PROJECT_DIR$/javascript/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/towers.js" afterPath="$PROJECT_DIR$/javascript/towers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="town-defense.iws" />
@@ -26,21 +25,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/javascript/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.777778">
-              <caret line="169" column="9" selection-start-line="169" selection-start-column="9" selection-end-line="169" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.2647059">
+              <caret line="150" column="33" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="towers.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="towers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/javascript/towers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3202847">
-              <caret line="130" column="51" selection-start-line="130" selection-start-column="51" selection-end-line="130" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="72" column="50" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -76,9 +75,9 @@
         <option value="$PROJECT_DIR$/javascript/player.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/javascript/mouse.js" />
-        <option value="$PROJECT_DIR$/javascript/towers.js" />
         <option value="$PROJECT_DIR$/javascript/bullet.js" />
         <option value="$PROJECT_DIR$/javascript/main.js" />
+        <option value="$PROJECT_DIR$/javascript/towers.js" />
       </list>
     </option>
   </component>
@@ -280,7 +279,13 @@
       <option name="project" value="LOCAL" />
       <updated>1447138182502</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="bullets firing but not for multiple towers">
+      <created>1447144302540</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1447144302540</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -330,7 +335,8 @@
     <MESSAGE value="FEATURES: Towers all work and drag well. &#10;BUGS: Towers 2 and 3 are showing some weird transparency which I can only attribute to jitter caused by being drawn some frames and not others. Will investigate. &#10;MISSING: Need to implement layer collision check before adding to array for drawing." />
     <MESSAGE value="+ player.js + bullet chuckNorris hero images" />
     <MESSAGE value="bullets fire but not properly yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="bullets fire but not properly yet" />
+    <MESSAGE value="bullets firing but not for multiple towers" />
+    <option name="LAST_COMMIT_MESSAGE" value="bullets firing but not for multiple towers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -729,18 +735,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/main.js">
+    <entry file="file://$PROJECT_DIR$/javascript/towers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.777778">
-          <caret line="169" column="9" selection-start-line="169" selection-start-column="9" selection-end-line="169" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="72" column="50" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/towers.js">
+    <entry file="file://$PROJECT_DIR$/javascript/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3202847">
-          <caret line="130" column="51" selection-start-line="130" selection-start-column="51" selection-end-line="130" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.2647059">
+          <caret line="150" column="33" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="33" />
           <folding />
         </state>
       </provider>
