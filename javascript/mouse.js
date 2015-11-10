@@ -52,7 +52,7 @@ Mouse.prototype.onMouseUp = function(evt)
     this.mouseUp = true;
     //testTower.firstTower.click = false;
     testTower.addANewTower();
-    console.log("mouse up")
+    //console.log("mouse up")
 };
 
 Mouse.prototype.onMouseMove = function(evt)
@@ -76,7 +76,7 @@ Mouse.prototype.onMouseMove = function(evt)
 Mouse.prototype.onMouseOver = function(evt)
 {
     this.mouseOverCanvas = true;
-    console.log(evt);
+    //console.log(evt);
     //this.keys[evt.keyCode] = false;
 };
 Mouse.prototype.onMouseOut = function(evt)
