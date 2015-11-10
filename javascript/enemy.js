@@ -2,11 +2,15 @@ var Enemy = function(level) {
 	this.type = level;
 	this.health = 100 * level;
 	
-	this.speed = 15;
-	this.x = 1;
-	this.y = -5;
-	this.velocity_x = 0;
-	this.velocity_y = 0;
+	this.speed = 200;
+	
+	this.tile_x = 1;
+	this.tile_y = -5;
+	
+	this.x = 35;
+	this.y = -35;
+	this.velocity_x = 2 * 0.1;
+	this.velocity_y = 2 * 0.1;
 	
 	this.image = document.createElement("img");
 	
@@ -21,12 +25,14 @@ var Enemy = function(level) {
 }
 
 Enemy.prototype.init_waypoints = function()
-{
-	this.waypoints_x = [1, 1, 8, 8, 20, 20];
-	this.waypoints_y = [-5, 12, 12, 3, 3, 17];
-	this.velocity_x = 2 * 0.1;
-	this.velocity_y = 2 * 0.1;
-	
+{	
+	// Tile Coordinates
+	//this.waypoints_x = [1, 2, 8, 8, 20, 20];
+	//this.waypoints_y = [-5, 13, 12, 3, 3, 17];
+		
+	// Tile Coordinates in Pixels
+	this.waypoints_x = [35, 35, 280, 280, 700, 700];
+	this.waypoints_y = [-35, 420, 420, 105, 105, 595];
 }
 
 function tileToPixel(tile)
@@ -38,6 +44,7 @@ function pixelToTile(pixel)
 {
 	return Math.floor(pixel/TILE);
 }
+
 
 Enemy.prototype.update = function(deltatime) {
 	
@@ -77,15 +84,24 @@ Enemy.prototype.update = function(deltatime) {
 		}
 	}
 	
+	this.tile_y = pixelToTile(this.y);
+	this.tile_x = pixelToTile(this.x);
 	
-	if (this.x == this.waypoints_x[this.waypointIndex] && this.y == this.waypoints_y[this.waypointIndex]) {	
+	
+	if (Math.floor(this.x) == this.waypoints_x[this.waypointIndex] && Math.floor(this.y) == this.waypoints_y[this.waypointIndex]) {	
 		this.waypointIndex++;
 	}
+	
+	context.fillStyle = "#f00";
+		context.font="14px Arial";
+		
+		context.fillText("ENEMY POSITION: " + Math.floor(this.x) + " / " + Math.floor(this.y), 5, 20);
+	
 }
 
 Enemy.prototype.draw = function() {
 	context.save();
-	context.translate(tileToPixel(this.x), tileToPixel(this.y));
+	context.translate(this.x, this.y);
 	context.drawImage(this.image, this.image.width, this.image.height); 
 			
 	context.restore();
