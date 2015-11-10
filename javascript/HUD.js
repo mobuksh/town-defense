@@ -5,6 +5,7 @@ var moneybag = document.createElement("img");
 moneybag.src = ("images/moneybag.png")
 
 var money = 100;
+var lives = 20;
 
 function drawhud(){
 	
@@ -18,7 +19,7 @@ function drawhud(){
 	
 	context.fillStyle = "#000";
 	context.font="40px Arial";
-	context.fillText("20", 890, 55);
+	context.fillText(lives, 890, 55);
 	
 	context.fillStyle = "#000";
 	context.font="40px Arial";
