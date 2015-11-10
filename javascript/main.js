@@ -106,8 +106,11 @@ var music = new Howl(
 //UNCOMMENT FOR MUSIC, add new music first 
 //music.play();
 var jitter = Math.random() * 0.2 - 0.1;
+console.log(jitter);
+//bullet.fire(100, 100, 1, jitter);
 
-bullet.fire(100, 100, 1, jitter);
+towerShootCount = 0;
+
 
 //RUN
 function run()
@@ -127,16 +130,46 @@ function run()
 		context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 20);
 	}
 
-	// BULLETS
-	bullet.update(deltaTime);
-
-	//bullet.fire(mouselistener.page_x, mouselistener.page_y, 5, 5 );
-
-	bullet.draw(10,10);
 
 	//TOWERS
 	testTower.update();
 	testTower.draw(mouselistener.page_x, mouselistener.page_y);
+	if (testTower.allTowers.length > 0) {
+		//console.log("tower length:", testTower.allTowers.lengthj
+		for (var i = 0; i < testTower.allTowers.length; i++) {
+			console.log("#towers: ", testTower.allTowers.length);
+			console.log("index: ", i);
+			for (var j = 0; j < 50; j++) {
+
+				console.log(j);
+				var jitter = Math.random() * 0.2 - 0.1;
+				testTower.allTowers[i].thisTowerBullets[j].fire(testTower.allTowers[i].x, testTower.allTowers[i].y, 1, jitter);
+				testTower.allTowers[i].thisTowerBullets[j].update(deltaTime);
+				testTower.allTowers[i].thisTowerBullets[j].draw(10, 10);
+			}
+			/*
+			console.log("shoot count: ", towerShootCount);
+			var jitter = Math.random() * 0.2 - 0.1;
+			testTower.allTowers[i].thisTowerBullets[towerShootCount].fire(testTower.allTowers[i].x, testTower.allTowers[i].y, 1, jitter);
+			testTower.allTowers[i].thisTowerBullets[towerShootCount].update(deltaTime);
+			testTower.allTowers[i].thisTowerBullets[towerShootCount].draw(10, 10);
+
+			if (towerShootCount < 50) {
+				towerShootCount++;
+			} else {
+				towerShootCount = 0;
+			}
+			*/
+		}
+	}
+
+	// BULLETS
+	//bullet.update(deltaTime);
+
+	//bullet.fire(mouselistener.page_x, mouselistener.page_y, 5, 5 );
+
+	//bullet.draw(10,10);
+
 	
 }
 
