@@ -25,3 +25,8 @@ function drawhud(){
 	context.font="40px Arial";
 	context.fillText(money, 700, 55);
 };
+
+
+function subtractLife() {
+	lives -= 1;
+}

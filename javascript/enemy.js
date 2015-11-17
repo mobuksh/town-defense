@@ -18,8 +18,7 @@ var Enemy = function(level) {
 
 	this.waypoints_x = [];
 	this.waypoints_y = [];
-	
-	this.init_waypoints();
+
 
 	this.waypointIndex = 0;
 }
