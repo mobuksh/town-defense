@@ -54,13 +54,6 @@ var SCREEN_WIDTH = canvas.width;
 
 var SCREEN_HEIGHT = canvas.height;
 
-var MAINMENU_STATE = 0;
-var GAME_STATE = 1;
-var END_STATE = 2;
-
-var state = MAINMENU_STATE;
-
-
 var cur_bullet_index = 0;
 //collision array
 var cells = [];
@@ -168,21 +161,6 @@ function pixelToTile(pixel) {
 }
 
 //RUN
-<<<<<<< HEAD
-function run()
-{
-	switch(state){
-	case(MAINMENU_STATE):
-		runMenu();
-		break;
-	case(GAME_STATE):
-		runGame();
-		break;
-	case(END_STATE):
-		runEnd();
-		break; 
-	};
-=======
 function run() {
     context.fillStyle = "green";
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -213,18 +191,18 @@ function run() {
     drawhud();
     //drawTowerInventory();
 
-    //if (mouselistener.mouseDown == true) {
-    //    context.fillStyle = "#f00";
-    //    context.font = "14px Arial";
-    //
-    //    context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
-    //    context.fillText("TILE POSITION: " + pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
-    //
-    //    var mouse_x = pixelToTile(mouselistener.page_x);
-    //    var mouse_y = pixelToTile(mouselistener.page_y);
-    //
-    //    context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
-    //}
+    if (mouselistener.mouseDown == true) {
+        context.fillStyle = "#f00";
+        context.font = "14px Arial";
+
+        context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
+        context.fillText("TILE POSITION: " + pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
+
+        var mouse_x = pixelToTile(mouselistener.page_x);
+        var mouse_y = pixelToTile(mouselistener.page_y);
+
+        context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
+    }
 
 
     //TOWERS
@@ -307,7 +285,6 @@ function run() {
 		enemy[enemyIndex].update(deltaTime);
 		enemy[enemyIndex].draw();
 	}
->>>>>>> 7f38c277060f59b01485b2fce8ef289474aeacbf
 	
 }
 

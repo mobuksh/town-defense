@@ -51,8 +51,7 @@ Mouse.prototype.onMouseUp = function(evt)
     this.mouseDown = false;
     this.mouseUp = true;
     //testTower.firstTower.click = false;
-	if (state == GAME_STATE)	
-		testTower.addANewTower();
+    testTower.addANewTower();
     //console.log("mouse up")
 };
 
