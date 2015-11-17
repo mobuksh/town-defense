@@ -75,6 +75,7 @@ Tower.prototype.update = function () {
             }
         }
     } else {
+
         // if the user is clicking a tower, set inventoryTowers[i] click to 'true'
         for (var i = 0; i < this.inventoryTowers.length; i++) {
             this.inventoryTowers[i].click = false;
@@ -96,7 +97,6 @@ Tower.prototype.update = function () {
 
         }
     }
-
 
     function getTileAtPixel(x, y) {
 
@@ -132,7 +132,6 @@ Tower.prototype.update = function () {
                 // give each new tower 50 bullets
                 objMaxTowerBullets: this.maxTowerBullets,
                 thisTowerBullets: new_bullet_pool
-
             }
         );
 
