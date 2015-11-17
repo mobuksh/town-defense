@@ -87,7 +87,57 @@ var keyboard = new Keyboard();
 var mouselistener = new Mouse();
 var testTower = new Tower();
 var bullet = new Bullet();
-var enemy = new Enemy(1);
+
+
+// Wave stuff.
+var enemy = [];
+
+var waveFinished = false;
+var waveStarted = false;
+
+var wave = 1;
+var count = 0;
+
+function initEnemies(index) {
+
+	 enemy[index].init_waypoints();
+	 count++;
+
+
+}
+
+
+
+function startWave() {
+
+	waveStarted = true;
+	waveFinished = false;
+
+	var wavePopulation = (wave * 40) / 2;
+
+	for (var i = 0; i < wavePopulation; i++) {
+		enemy[i] = new Enemy(wave);
+
+	}
+
+	var clock = 2, second;
+    var index = 0;
+	setInterval(function () {
+        second = parseInt(clock % 60, 10);
+		if (index < wavePopulation) {
+			enemy[index].init_waypoints();
+			index+=1;
+		}
+		if (--clock < 0) {
+			clock = 2;
+		}
+    }, 1000);
+
+	//debugger;
+
+}
+
+
 
 var music = new Howl(
     {
@@ -118,6 +168,25 @@ function run() {
 
     var deltaTime = getDeltaTime();
 
+	drawMap(0,0);
+	drawhud();
+	//drawTowerInventory();
+
+
+
+
+	if (mouselistener.mouseDown == true) {
+		context.fillStyle = "#f00";
+		context.font="14px Arial";
+		
+		context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
+		context.fillText("TILE POSITION: " +  pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
+		
+		var mouse_x = pixelToTile(mouselistener.page_x);
+		var mouse_y = pixelToTile(mouselistener.page_y);
+		
+		context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
+	}
     drawMap(0, 0);
     drawhud();
     //drawTowerInventory();
@@ -200,10 +269,23 @@ function run() {
     //bullet.draw(10,10);
 
 
-    //ENEMIES
-    enemy.update(deltaTime);
-    enemy.draw();
+	if (!waveStarted || waveFinished) {
+		startWave();
 
+	}
+
+	if (waveStarted && enemy.length == 0) {
+		waveFinished = true;
+		waveStarted = false;
+		wave+=1;
+	}
+
+	//ENEMIES
+	for (var enemyIndex = 0; enemyIndex < (wave * 40) / 2; enemyIndex++) {
+		enemy[enemyIndex].update(deltaTime);
+		enemy[enemyIndex].draw();
+	}
+	
 }
 
 
