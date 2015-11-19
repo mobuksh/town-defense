@@ -1,4 +1,4 @@
-var Enemy = function(level) {
+var Enemy = function(level, index) {
 	this.type = level;
 	this.health = 100 * level;
 	
@@ -6,7 +6,9 @@ var Enemy = function(level) {
 	
 	this.tile_x = 1;
 	this.tile_y = -5;
-	
+	this.index = index;
+	this.dead = true;
+
 	this.x = 35;
 	this.y = -35;
 	this.velocity_x = 2 * 0.1;
@@ -30,6 +32,7 @@ Enemy.prototype.init_waypoints = function()
 	//this.waypoints_y = [-5, 13, 12, 3, 3, 17];
 		
 	// Tile Coordinates in Pixels
+	this.dead = false;
 	this.waypoints_x = [35, 35, 280, 280, 700, 700];
 	this.waypoints_y = [-35, 420, 420, 105, 105, 595];
 }
@@ -44,9 +47,29 @@ function pixelToTile(pixel)
 	return Math.floor(pixel/TILE);
 }
 
+Enemy.prototype.die = function() {
+	this.dead = true;
+
+}
 
 Enemy.prototype.update = function(deltatime) {
-	
+	if (this.dead) {
+		return;
+	}
+	if (Math.floor(this.x) == 700 && Math.floor(this.y) == 595) {
+			subtractLife();
+			this.dead = true;
+
+
+
+			this.tile_x = 1;
+			this.tile_y = -5;
+
+			this.x = 35;
+			this.y = -35;
+			return;
+	}
+
 	if (this.x != this.waypoints_x[this.waypointIndex]) {
 		switch(this.waypointIndex) {
 			case 0:
@@ -99,6 +122,9 @@ Enemy.prototype.update = function(deltatime) {
 }
 
 Enemy.prototype.draw = function() {
+	if (this.dead) {
+		return;
+	}
 	context.save();
 	context.translate(this.x, this.y);
 	context.drawImage(this.image, this.image.width, this.image.height); 
