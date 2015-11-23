@@ -62,10 +62,10 @@ function runGame(){
 			var shootDirection = mag({
 				towerX: testTower.allTowers[i].x,
 				towerY: testTower.allTowers[i].y,
-				enemyU: enemy.x,
-				enemyV: enemy.y
+				enemyU: enemy[5].x,
+				enemyV: enemy[5].y
 			});
-			console.log(shootDirection.normalY, ", ", shootDirection.normalX);
+			//console.log(shootDirection.normalY, ", ", shootDirection.normalX);
 			//shootDirection.normalY -= .5;
 
 			// only shoot if enemy is within range
@@ -75,9 +75,63 @@ function runGame(){
 			var bSide = "" ;
 			var cSide = "";
 
-			//shoot the bullet
-			testTower.allTowers[i].thisTowerBullets[towerShootCount].fire(testTower.allTowers[i].x+25, testTower.allTowers[i].y+5, shootDirection.normalX, shootDirection.normalY);
-			//debugger;
+			var distanceX = "";
+			var distanceY = "";
+
+			//return a positive value
+			function negation (number) {
+				if (number < 0) {
+					return -number
+				} else {
+					return number
+				}
+			}
+
+			//go through each tower, cycle through each enemy per tower
+			//get distance of enemy. Shoot enemy that is closest
+			//kill enemy that you shoot
+
+			//console.log("enemy x,y: ", enemy[5].x, enemy[5].y, "tower x,y: ", testTower.all(Towers[i].x, testTower.allTowers[i].y, "x distance: ", -enemy[5].x - -testTower.allTowers[i].x, ", y distance: ", -enemy[5].y - -testTower.allTowers[i].y);
+			/*console.log(
+					negation(enemy[5].x - testTower.allTowers[i].x),
+					negation(enemy[5].x - testTower.allTowers[i].x) < towerRange,
+					negation(enemy[5].y - testTower.allTowers[i].y),
+					negation(enemy[5].y - testTower.allTowers[i].y) < towerRange
+
+			);*/
+			/*
+			console.log(
+					(-enemy[5].x - -testTower.allTowers[i].x),
+					(-enemy[5].x - -testTower.allTowers[i].x) < towerRange,
+					(-enemy[5].y - -testTower.allTowers[i].y),
+					(-enemy[5].y - -testTower.allTowers[i].y) < towerRange
+
+			);*/
+
+			var towerRange = 200;
+
+			function distance (firstPoint, secondPoint){
+				if (firstPoint > secondPoint) {
+					return firstPoint - secondPoint;
+				} else {
+					return secondPoint - firstPoint;
+				}
+			}
+
+
+			if (
+					((distance(enemy[5].x, testTower.allTowers[i].x) < towerRange)) && ((distance(enemy[5].y, testTower.allTowers[i].y) < towerRange))
+			) {
+				//shoot the bulle
+				testTower.allTowers[i].thisTowerBullets[towerShootCount].fire(testTower.allTowers[i].x + 25, testTower.allTowers[i].y + 5, shootDirection.normalX, shootDirection.normalY);
+				//debugger;
+			}
+
+
+
+
+
+
 
 			//testTower.allTowers[i].thisTowerBullets[towerShootCount].update(deltaTime);
 			//testTower.allTowers[i].thisTowerBullets[towerShootCount].draw(10, 10);
