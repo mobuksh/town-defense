@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30e8d38f-32f8-46a0-bc78-20ee0f345f2a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/town-defense.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/end_state.js" afterPath="$PROJECT_DIR$/javascript/end_state.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/game_state.js" afterPath="$PROJECT_DIR$/javascript/game_state.js" />
@@ -428,12 +424,18 @@
       <option name="project" value="LOCAL" />
       <updated>1448274911729</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="cycles through array but subtractive distance needs to be altered to Eucladian distance">
+      <created>1448314840767</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1448314840767</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="981" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14468865" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -486,7 +488,8 @@
     <MESSAGE value="oska, mo, matt committed" />
     <MESSAGE value="slight formatting change" />
     <MESSAGE value="range now works, need to cycle through array" />
-    <option name="LAST_COMMIT_MESSAGE" value="range now works, need to cycle through array" />
+    <MESSAGE value="cycles through array but subtractive distance needs to be altered to Eucladian distance" />
+    <option name="LAST_COMMIT_MESSAGE" value="cycles through array but subtractive distance needs to be altered to Eucladian distance" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
