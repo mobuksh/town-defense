@@ -47,68 +47,21 @@ function runGame(){
 	testTower.update();
 	testTower.draw(mouselistener.page_x, mouselistener.page_y);
 
-	//FIRE BULLETS FROM EACH TOWER
+	// Check if any towers have been placed on the map
 	if (testTower.allTowers.length > 0) {
-		//console.log("tower length:", testTower.allTowers.lengthj
+
+		//LOOP THROUGH EACH TOWER
 		for (var i = 0; i < testTower.allTowers.length; i++) {
-			//console.log("#towers: ", testTower.allTowers.length);
-			//console.log("index: ", i);
 
-
-			//console.log("shoot count: ", towerShootCount);
-			var jitter = Math.random() * 0.2 - 0.1;
-
-			//get the mag for this bullet
-			var shootDirection = mag({
-				towerX: testTower.allTowers[i].x,
-				towerY: testTower.allTowers[i].y,
-				enemyU: enemy[5].x,
-				enemyV: enemy[5].y
-			});
-			//console.log(shootDirection.normalY, ", ", shootDirection.normalX);
-			//shootDirection.normalY -= .5;
-
-			// only shoot if enemy is within range
-			var towerRangeX = testTower.allTowers[i].x;
-
-			var aSide = "";
-			var bSide = "" ;
-			var cSide = "";
-
-			var distanceX = "";
-			var distanceY = "";
-
-			//return a positive value
-			function negation (number) {
-				if (number < 0) {
-					return -number
-				} else {
-					return number
-				}
-			}
-
-			//go through each tower, cycle through each enemy per tower
-			//get distance of enemy. Shoot enemy that is closest
-			//kill enemy that you shoot
-
-			//console.log("enemy x,y: ", enemy[5].x, enemy[5].y, "tower x,y: ", testTower.all(Towers[i].x, testTower.allTowers[i].y, "x distance: ", -enemy[5].x - -testTower.allTowers[i].x, ", y distance: ", -enemy[5].y - -testTower.allTowers[i].y);
-			/*console.log(
-					negation(enemy[5].x - testTower.allTowers[i].x),
-					negation(enemy[5].x - testTower.allTowers[i].x) < towerRange,
-					negation(enemy[5].y - testTower.allTowers[i].y),
-					negation(enemy[5].y - testTower.allTowers[i].y) < towerRange
-
-			);*/
-			/*
-			console.log(
-					(-enemy[5].x - -testTower.allTowers[i].x),
-					(-enemy[5].x - -testTower.allTowers[i].x) < towerRange,
-					(-enemy[5].y - -testTower.allTowers[i].y),
-					(-enemy[5].y - -testTower.allTowers[i].y) < towerRange
-
-			);*/
-
-			var towerRange = 200;
+			//Cycle through each tower and get the distance from each enemy
+			//shoot the enemy that is closest
+			var nearest = canvas.width * 10; // make the default value impossibly large to ensure it is overwritten by a smaller value
+			var towerRange = 200; // how far away an object is before it is shot
+			var thisEnemyDistanceX;
+			var thisEnemyDistanceY;
+			var enemyToShoot;
+			var nearestX = canvas.width * 10;
+			var nearestY = canvas.width * 10;
 
 			function distance (firstPoint, secondPoint){
 				if (firstPoint > secondPoint) {
@@ -118,29 +71,36 @@ function runGame(){
 				}
 			}
 
+			// LOOP THROUGH EACH ENEMY AND MEASURE THE DISTANCE TO THE TOWER
+			for(var k = 0; k < enemy.length; k++){
+				if (((thisEnemyDistanceX = distance(enemy[k].x, testTower.allTowers[i].x)) < nearestX) && (thisEnemyDistanceY = distance(enemy[k].y, testTower.allTowers[i].y) < nearestY)) {
+					nearestX = thisEnemyDistanceX;
+					nearestY = thisEnemyDistanceY;
+					nearest = thisEnemyDistanceX + thisEnemyDistanceY;
+					enemyToShoot = k;
+					console.log("tower: ", i, "enemy to shoot: ", enemyToShoot, "distance: ", nearest);
+				}
+			}
+
+			//get the mag for this bullet
+			var shootDirection = mag({
+				towerX: testTower.allTowers[i].x,
+				towerY: testTower.allTowers[i].y,
+				enemyU: enemy[enemyToShoot].x,
+				enemyV: enemy[enemyToShoot].y
+			});
+
 
 			if (
-					((distance(enemy[5].x, testTower.allTowers[i].x) < towerRange)) && ((distance(enemy[5].y, testTower.allTowers[i].y) < towerRange))
+					((distance(enemy[enemyToShoot].x, testTower.allTowers[i].x) < towerRange)) && ((distance(enemy[enemyToShoot].y, testTower.allTowers[i].y) < towerRange))
 			) {
-				//shoot the bulle
+				//shoot the bullet
 				testTower.allTowers[i].thisTowerBullets[towerShootCount].fire(testTower.allTowers[i].x + 25, testTower.allTowers[i].y + 5, shootDirection.normalX, shootDirection.normalY);
 				//debugger;
 			}
 
-
-
-
-
-
-
-			//testTower.allTowers[i].thisTowerBullets[towerShootCount].update(deltaTime);
-			//testTower.allTowers[i].thisTowerBullets[towerShootCount].draw(10, 10);
-
 			for (var j = 0; j < 50; j++) {
 
-				//console.log(j);
-				var jitter = Math.random() * 0.2 - 0.1;
-				//testTower.allTowers[i].thisTowerBullets[j].fire(testTower.allTowers[i].x, testTower.allTowers[i].y, 1, jitter);
 				testTower.allTowers[i].thisTowerBullets[j].update(deltaTime);
 				testTower.allTowers[i].thisTowerBullets[j].draw(10, 10);
 			}
@@ -153,12 +113,6 @@ function runGame(){
 		}
 	}
 
-	// BULLETS
-	//bullet.update(deltaTime);
-
-	//bullet.fire(mouselistener.page_x, mouselistener.page_y, 5, 5 );
-
-	//bullet.draw(10,10);
 
 	var deathCount = 0;
 
