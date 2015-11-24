@@ -56,6 +56,7 @@ function pixelToTile(pixel) {
 
 
 function runGame() {
+	//console.log("Run game lives: ", lives);
 
     context.fillStyle = "green";
     context.fillRect(0, 0, canvas.width, canvas.height);

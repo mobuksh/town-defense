@@ -116,16 +116,109 @@ function pixelToTile(pixel) {
     return Math.floor(pixel / TILE);
 }
 
+
+var menu_music = new Howl({
+	urls: ["audio/Carefree.mp3"],
+	loop: true,
+	buffer: true,
+	volume: 0.5
+});
+
+var game_music = new Howl({
+	urls: ["audio/TheLift.mp3"],
+	loop: true,
+	buffer: true,
+	volume: 0.5
+});
+
+var ned_music = new Howl({
+	urls: ["audio/Rest.mp3"],
+	loop: true,
+	buffer: true,
+	volume: 0.5
+});
+var is_menu_music_playing = false;
+var is_game_music_playing = false;
+var  is_ned_music_playing = false;
+
+//var music = new Howl(
+//{
+//	(menu_state){
+//
+//	};
+//	if (game_state){
+//		urls: ["audio/TheLift.mp3"],
+//		loop: true,
+//		buffer: true,
+//		volume: 0.5
+//	};
+//	else if (end_state){
+//		urls: ["audio/Rest.mp3"],
+//		loop: true,
+//		buffer: true,
+//		volume: 0.5
+//	}
+//
+//});
+//uncomment for music
+//music.play();
+
+
 //RUN
 function run() {
     switch (state) {
         case(MAINMENU_STATE):
+			if (!is_menu_music_playing)
+			{
+				menu_music.play();
+				is_menu_music_playing = true;
+			}
+			if (is_game_music_playing)
+			{
+				game_music.stop();
+				is_game_music_playing = false;
+			}
+			if (is_ned_music_playing)
+			{
+				ned_music.stop();
+				is_ned_music_playing = false;
+			}
             runMenu();
             break;
         case(GAME_STATE):
+			if (is_menu_music_playing)
+			{
+				menu_music.stop();
+				is_menu_music_playing = false;
+			}
+			if (!is_game_music_playing)
+			{
+				game_music.play();
+				is_game_music_playing = true;
+			}
+			if (is_ned_music_playing)
+			{
+				ned_music.stop();
+				is_ned_music_playing = false;
+			}
             runGame();
             break;
         case(END_STATE):
+			if (is_menu_music_playing)
+			{
+				menu_music.stop();
+				is_menu_music_playing = false;
+			}
+			if (is_game_music_playing)
+			{
+				game_music.stop();
+				is_game_music_playing = false;
+			}
+			if (!is_ned_music_playing)
+			{
+				ned_music.play();
+				is_ned_music_playing = true;
+			}
             runEnd();
             break;
     }

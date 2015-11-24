@@ -110,10 +110,45 @@ Tower.prototype.update = function () {
     self.addANewTower = function () {
         if (mouselistener.mouseOverCanvas === true) {
             if (money > 0) {
+				var check_tower = this.towerClicked;
+				var can_afford = true;
+
+			    if (check_tower == 0)
+				{
+                    if (money - 1 < 0)
+						can_afford = false;
+                }
+				else if (check_tower == 1)
+				{
+					if (money - 2 < 0)
+						can_afford = false;
+                }
+                else if (check_tower == 2)
+				{
+                    if (money - 3 < 0)
+						can_afford = false;
+				}
+
+				if (can_afford) {
+                    if (check_tower == 0) {
+                        if (money -= 1)
+                            can_afford = true;
+                    }
+                    else if (check_tower == 1) {
+                        if (money -= 2)
+                            can_afford = true;
+                    }
+                    else if (check_tower == 2) {
+                        if (money -= 3)
+                            can_afford = true;
+                    }
+                }
+
+					//create towers
                 createNewTower(this.towerClicked, self.addNewTowerOnRelease.across, self.addNewTowerOnRelease.high);
 
                 // find the last tower that was added just now (at the end of the array)
-                var new_tower = self.allTowers[self.allTowers.length - 1];
+               /* var new_tower = self.allTowers[self.allTowers.length - 1];
 
                 // decrease money based on the 'tower-type' of the last tower added
                 if (new_tower.towerType == 0) {
@@ -123,7 +158,7 @@ Tower.prototype.update = function () {
                 }
                 else if (new_tower.towerType == 2) {
                     money -= 3;
-                }
+                }*/
             }
         }
     }
@@ -161,6 +196,7 @@ Tower.prototype.update = function () {
     //    this.cur_bullet_index = 0;
     //}
 }
+
 
 Tower.prototype.draw = function () {
     context.save();
