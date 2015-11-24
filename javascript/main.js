@@ -95,53 +95,6 @@ var mouselistener = new Mouse();
 var testTower = new Tower();
 var bullet = new Bullet();
 
-
-// Wave stuff.
-var enemy = [];
-
-var waveFinished = false;
-var waveStarted = false;
-
-var wave = 1;
-var count = 0;
-var wavePopulation = (wave * 40) / 2;
-
-function initEnemies(index) {
-
-    enemy[index].init_waypoints();
-    count++;
-
-
-}
-
-
-function startWave() {
-
-    waveStarted = true;
-    waveFinished = false;
-
-    for (var i = 0; i < wavePopulation; i++) {
-        enemy[i] = new Enemy(wave, i);
-    }
-
-    var clock = 2, second;
-    var index = 0;
-    setInterval(function () {
-        second = parseInt(clock % 60, 10);
-        if (index < wavePopulation) {
-            enemy[index].init_waypoints();
-            index += 1;
-        }
-        if (--clock < 0) {
-            clock = 2;
-        }
-    }, 1000);
-
-    //debugger;
-
-}
-
-
 var music = new Howl(
     {
         urls: [""],

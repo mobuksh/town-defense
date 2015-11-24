@@ -109,8 +109,22 @@ Tower.prototype.update = function () {
     // check if conditions are right to create a new tower, if yes, send off to 'createNewTower' function for array push
     self.addANewTower = function () {
         if (mouselistener.mouseOverCanvas === true) {
-            createNewTower(this.towerClicked, self.addNewTowerOnRelease.across, self.addNewTowerOnRelease.high);
-            //console.log("adding new tower", self.addNewTowerOnRelease.across, self.addNewTowerOnRelease.high);
+            if (money > 0) {
+                createNewTower(this.towerClicked, self.addNewTowerOnRelease.across, self.addNewTowerOnRelease.high);
+
+                // find the last tower that was added just now (at the end of the array)
+                var new_tower = self.allTowers[self.allTowers.length - 1];
+
+                // decrease money based on the 'tower-type' of the last tower added
+                if (new_tower.towerType == 0) {
+                    money -= 1;
+                } else if (new_tower.towerType == 1) {
+                    money -= 2;
+                }
+                else if (new_tower.towerType == 2) {
+                    money -= 3;
+                }
+            }
         }
     }
 
