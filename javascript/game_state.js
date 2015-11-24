@@ -190,6 +190,9 @@ function runGame() {
         enemy[enemyIndex].update(deltaTime);
         enemy[enemyIndex].draw();
     }
+    if ((testTower.allTowers.length > 0) && (enemy.length > 0)) {
+        checkCollide();
+    }
 
 
     /*
