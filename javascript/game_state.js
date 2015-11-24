@@ -71,15 +71,40 @@ function runGame(){
 				}
 			}
 
+
+			/*
+				for every tower tower:
+					loop through every enemy:
+						mag: get its distance from tower,
+						if it's less than the lowest distance,
+						make this the new lowest distance,
+						make this enemy the new target.
+					end loop
+				end for
+			 */
+
+
 			// LOOP THROUGH EACH ENEMY AND MEASURE THE DISTANCE TO THE TOWER
 			for(var k = 0; k < enemy.length; k++){
-				if (((thisEnemyDistanceX = distance(enemy[k].x, testTower.allTowers[i].x)) < nearestX) && (thisEnemyDistanceY = distance(enemy[k].y, testTower.allTowers[i].y) < nearestY)) {
-					nearestX = thisEnemyDistanceX;
-					nearestY = thisEnemyDistanceY;
-					nearest = thisEnemyDistanceX + thisEnemyDistanceY;
+				var towerRadius = mag({
+					towerX: testTower.allTowers[i].x,
+					towerY: testTower.allTowers[i].y,
+					enemyU: enemy[k].x,
+					enemyV: enemy[k].y
+				});
+				if(towerRadius.distance < nearest ){
+					nearest = towerRadius.distance;
 					enemyToShoot = k;
 					console.log("tower: ", i, "enemy to shoot: ", enemyToShoot, "distance: ", nearest);
 				}
+
+				//if (((thisEnemyDistanceX = distance(enemy[k].x, testTower.allTowers[i].x)) < nearestX) && (thisEnemyDistanceY = distance(enemy[k].y, testTower.allTowers[i].y) < nearestY)) {
+				//	nearestX = thisEnemyDistanceX;
+				//	nearestY = thisEnemyDistanceY;
+				//	nearest = thisEnemyDistanceX + thisEnemyDistanceY;
+				//	enemyToShoot = k;
+				//	console.log("tower: ", i, "enemy to shoot: ", enemyToShoot, "distance: ", nearest);
+				//}
 			}
 
 			//get the mag for this bullet
