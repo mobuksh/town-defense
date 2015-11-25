@@ -7,7 +7,7 @@ var Enemy = function(level, index) {
 	this.tile_x = 1;
 	this.tile_y = -5;
 	this.index = index;
-	this.dead = true;
+	this.dead = false;
 
 	this.x = 35;
 	this.y = -35;

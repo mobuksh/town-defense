@@ -56,8 +56,10 @@ function pixelToTile(pixel) {
 
 
 function runGame() {
-	//console.log("Run game lives: ", lives);
-
+    //console.log("Run game lives: ", lives);
+    if (typeof enemy[0] != 'undefined') {
+        console.log(enemy[0].dead);
+    }
     context.fillStyle = "green";
     context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -126,13 +128,14 @@ function runGame() {
                         enemyV: enemy[k].y
                     });
                 }
-            }
-
                 // this enemy is nearer, make this the new nearest target
                 if (typeof towerRadius != 'undefined') {
+                    //debugger;
                     if (towerRadius.distance < nearest) {
                         nearest = towerRadius.distance;
                         enemyToShoot = k;
+                        //debugger;
+
                         //console.log("tower: ", i, "enemy to shoot: ", enemyToShoot, "distance: ", nearest);
                     }
 
@@ -162,146 +165,150 @@ function runGame() {
                         testTower.allTowers[i].thisTowerBullets[j].draw(10, 10);
                     }
                 }
+
             }
 
 
-            towerShootCount++;
-            if (towerShootCount > 49) {
-                towerShootCount = 0;
-            }
-        }
-
-        var deathCount = 0;
-
-        for (var deadEnemy = 0; deadEnemy < enemy.length; deadEnemy++) {
-            if (enemy[deadEnemy].dead == true)
-                deathCount += 1;
-        }
-
-        if (deathCount == wavePopulation) {
-            waveFinished = true;
-            waveStarted = false;
-            wave += 1
-        }
-
-        if (!waveStarted || waveFinished) {
-            startWave();
-
         }
 
 
-        //ENEMIES
-        //for (var enemyIndex = 0; enemyIndex < (wave * 40) / 2; enemyIndex++) {
-        for (var enemyIndex = 0; enemyIndex < enemy.length; enemyIndex++) {
-            enemy[enemyIndex].update(deltaTime);
-            enemy[enemyIndex].draw();
+        towerShootCount++;
+        if (towerShootCount > 49) {
+            towerShootCount = 0;
         }
-        if ((testTower.allTowers.length > 0) && (enemy.length > 0)) {
-            checkCollide();
-        }
-
-        var wavePop = (wave * 40) / 2;
-
-        if (!waveStarted || waveFinished) {
-            startWave();
-        }
-        else {
-            wave_timer += deltaTime;
-            if (wave_timer > 1.5) {
-                SpawnEnemy(wavePop);
-                wave_timer = 0.0;
-            }
-        }
-
-        var deathCount = 0;
-
-        for (var dead = 0; dead < enemy.length; dead++) {
-            if (enemy[dead].dead)
-                deathCount += 1;
-        }
-
-        if (deathCount >= wavePop) {
-            wave += 1;
-            waveStarted = false;
-            waveFinished = true;
-            enemy = [];
-            //startWave();
-        }
-
-        //ENEMIES
-        for (var enemyIndex = 0; enemyIndex < enemy.length; enemyIndex++) {
-            enemy[enemyIndex].update(deltaTime);
-            enemy[enemyIndex].draw();
-        }
-        /*
-         context.fillStyle = "green";
-         context.fillRect(0, 0, canvas.width, canvas.height);
-
-
-         var deltaTime = getDeltaTime();
-
-         drawMap(0,0);
-         drawhud();
-         //drawTowerInventory();
-
-         if (mouselistener.mouseDown == true) {
-         context.fillStyle = "#f00";
-         context.font="14px Arial";
-
-         context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
-         context.fillText("TILE POSITION: " +  pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
-
-         var mouse_x = pixelToTile(mouselistener.page_x);
-         var mouse_y = pixelToTile(mouselistener.page_y);
-
-         context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
-         }
-
-
-         //TOWERS
-         testTower.update();
-         testTower.draw(mouselistener.page_x, mouselistener.page_y);
-
-         //FIRE BULLETS FROM EACH TOWER
-         if (testTower.allTowers.length > 0) {
-         //console.log("tower length:", testTower.allTowers.lengthj
-         for (var i = 0; i < testTower.allTowers.length; i++) {
-         console.log("#towers: ", testTower.allTowers.length);
-         console.log("index: ", i);
-
-
-         console.log("shoot count: ", towerShootCount);
-         var jitter = Math.random() * 0.2 - 0.1;
-         testTower.allTowers[i].thisTowerBullets[towerShootCount].fire(testTower.allTowers[i].x, testTower.allTowers[i].y, 1, jitter);
-         //testTower.allTowers[i].thisTowerBullets[towerShootCount].update(deltaTime);
-         //testTower.allTowers[i].thisTowerBullets[towerShootCount].draw(10, 10);
-
-         for (var j = 0; j < 50; j++) {
-
-         console.log(j);
-         var jitter = Math.random() * 0.2 - 0.1;
-         //testTower.allTowers[i].thisTowerBullets[j].fire(testTower.allTowers[i].x, testTower.allTowers[i].y, 1, jitter);
-         testTower.allTowers[i].thisTowerBullets[j].update(deltaTime);
-         testTower.allTowers[i].thisTowerBullets[j].draw(10, 10);
-         }
-
-
-         }
-         towerShootCount++;
-         if (towerShootCount > 49) {
-         towerShootCount = 0;
-         }
-         }
-
-         // BULLETS
-         //bullet.update(deltaTime);
-
-         //bullet.fire(mouselistener.page_x, mouselistener.page_y, 5, 5 );
-
-         //bullet.draw(10,10);
-
-
-         //ENEMIES
-         */
     }
+
+    var deathCount = 0;
+
+    for (var deadEnemy = 0; deadEnemy < enemy.length; deadEnemy++) {
+        if (enemy[deadEnemy].dead == true)
+            deathCount += 1;
+    }
+
+    if (deathCount == wavePopulation) {
+        waveFinished = true;
+        waveStarted = false;
+        wave += 1
+    }
+
+    if (!waveStarted || waveFinished) {
+        startWave();
+
+    }
+
+
+    //ENEMIES
+    //for (var enemyIndex = 0; enemyIndex < (wave * 40) / 2; enemyIndex++) {
+    for (var enemyIndex = 0; enemyIndex < enemy.length; enemyIndex++) {
+        enemy[enemyIndex].update(deltaTime);
+        enemy[enemyIndex].draw();
+    }
+    if ((testTower.allTowers.length > 0) && (enemy.length > 0)) {
+        checkCollide();
+    }
+
+    var wavePop = (wave * 40) / 2;
+
+    if (!waveStarted || waveFinished) {
+        startWave();
+    }
+    else {
+        wave_timer += deltaTime;
+        if (wave_timer > 1.5) {
+            SpawnEnemy(wavePop);
+            wave_timer = 0.0;
+        }
+    }
+
+    var deathCount = 0;
+
+    //for (var dead = 0; dead < enemy.length; dead++) {
+    //    if (enemy[dead].dead)
+    //        deathCount += 1;
+    //}
+
+    if (deathCount >= wavePop) {
+        wave += 1;
+        waveStarted = false;
+        waveFinished = true;
+        enemy = [];
+        //startWave();
+    }
+
+    //ENEMIES
+    for (var enemyIndex = 0; enemyIndex < enemy.length; enemyIndex++) {
+        enemy[enemyIndex].update(deltaTime);
+        enemy[enemyIndex].draw();
+    }
+    /*
+     context.fillStyle = "green";
+     context.fillRect(0, 0, canvas.width, canvas.height);
+
+
+     var deltaTime = getDeltaTime();
+
+     drawMap(0,0);
+     drawhud();
+     //drawTowerInventory();
+
+     if (mouselistener.mouseDown == true) {
+     context.fillStyle = "#f00";
+     context.font="14px Arial";
+
+     context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
+     context.fillText("TILE POSITION: " +  pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
+
+     var mouse_x = pixelToTile(mouselistener.page_x);
+     var mouse_y = pixelToTile(mouselistener.page_y);
+
+     context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
+     }
+
+
+     //TOWERS
+     testTower.update();
+     testTower.draw(mouselistener.page_x, mouselistener.page_y);
+
+     //FIRE BULLETS FROM EACH TOWER
+     if (testTower.allTowers.length > 0) {
+     //console.log("tower length:", testTower.allTowers.lengthj
+     for (var i = 0; i < testTower.allTowers.length; i++) {
+     console.log("#towers: ", testTower.allTowers.length);
+     console.log("index: ", i);
+
+
+     console.log("shoot count: ", towerShootCount);
+     var jitter = Math.random() * 0.2 - 0.1;
+     testTower.allTowers[i].thisTowerBullets[towerShootCount].fire(testTower.allTowers[i].x, testTower.allTowers[i].y, 1, jitter);
+     //testTower.allTowers[i].thisTowerBullets[towerShootCount].update(deltaTime);
+     //testTower.allTowers[i].thisTowerBullets[towerShootCount].draw(10, 10);
+
+     for (var j = 0; j < 50; j++) {
+
+     console.log(j);
+     var jitter = Math.random() * 0.2 - 0.1;
+     //testTower.allTowers[i].thisTowerBullets[j].fire(testTower.allTowers[i].x, testTower.allTowers[i].y, 1, jitter);
+     testTower.allTowers[i].thisTowerBullets[j].update(deltaTime);
+     testTower.allTowers[i].thisTowerBullets[j].draw(10, 10);
+     }
+
+
+     }
+     towerShootCount++;
+     if (towerShootCount > 49) {
+     towerShootCount = 0;
+     }
+     }
+
+     // BULLETS
+     //bullet.update(deltaTime);
+
+     //bullet.fire(mouselistener.page_x, mouselistener.page_y, 5, 5 );
+
+     //bullet.draw(10,10);
+
+
+     //ENEMIES
+     */
+}
 	
