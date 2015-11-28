@@ -2,7 +2,7 @@ var Enemy = function(level, index) {
 	this.type = level;
 	this.health = 100 * level;
 	
-	this.speed = 200;
+	this.speed = 100;
 	
 	this.tile_x = 1;
 	this.tile_y = -5;
@@ -114,10 +114,10 @@ Enemy.prototype.update = function(deltatime) {
 		this.waypointIndex++;
 	}
 	
-	context.fillStyle = "#f00";
-		context.font="14px Arial";
+	//context.fillStyle = "#f00";
+	//	context.font="14px Arial";
 		
-		context.fillText("ENEMY POSITION: " + Math.floor(this.x) + " / " + Math.floor(this.y), 5, 20);
+		//context.fillText("ENEMY POSITION: " + Math.floor(this.x) + " / " + Math.floor(this.y), 5, 20);
 	
 }
 
@@ -127,7 +127,12 @@ Enemy.prototype.draw = function() {
 	}
 	context.save();
 	context.translate(this.x, this.y);
-	context.drawImage(this.image, this.image.width, this.image.height); 
+	/*
+	context.fillStyle = "#f00";
+	context.font="14px Arial";
+	context.fillText("x:" + Math.floor(this.x) + ", y:" + Math.floor(this.y), this.x, this.y);
+	*/
+	context.drawImage(this.image, this.image.width, this.image.height);
 			
 	context.restore();
 }

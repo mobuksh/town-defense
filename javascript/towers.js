@@ -46,7 +46,7 @@ var Tower = function () {
     this.allTowers = [];
     this.towerBullets = [];
     this.cur_bullet_index = 0;
-    this.maxTowerBullets = 50;
+    this.maxTowerBullets = 10;
 
 }
 
@@ -167,7 +167,7 @@ Tower.prototype.update = function () {
     function createNewTower(towertype, x, y) {
 
         var new_bullet_pool = [];
-        for (var i = 0; i < 50; i++) {
+        for (var i = 0; i < 10; i++) {
             new_bullet_pool[i] = new Bullet();
         }
 

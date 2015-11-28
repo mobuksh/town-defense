@@ -1,4 +1,4 @@
-{ "height":20,
+/*{ "height":20,
  "layers":[
         {
          "compression":"zlib",
@@ -68,3 +68,4 @@
  "version":1,
  "width":30
 }
+    */

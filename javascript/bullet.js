@@ -2,7 +2,7 @@
  * Created by mrcheese on 29/09/15.
  */
 
-var BULLET_SPEED = 500;
+var BULLET_SPEED = 20;
 
 var Bullet = function () {
     this.image = document.createElement("img"),

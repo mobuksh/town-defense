@@ -1,0 +1,19 @@
+    > fix the bullet collision
+        > issue: everything EXCEPT what is in the tower range is currently dying
+            - drawing the x and y next to each enemy
+            - slowing down bullets and altering to 3 bullets with positions printing
+> fix dropping of towers onto path
+    > towers should not be droppable on path
+    > red color for hover where tile is not allowed
+> fix multiple towers becoming selected when mouse hovers
+
++ (optional) add enemy health depletion
++ make each tower different
+    + add more jitter + bullets for different tower types
+    + (optional) make the enemy shoot direction compensate based
+      on distance (get distance on fire and add to x/y)
++ add cash for enemy kills
++ add music and artwork (sfx if there is time)
+    + change opening image (creative commons spooky image)
+    + spooky sound track
+    + play death sound when enemy dies
