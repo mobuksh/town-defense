@@ -47,16 +47,19 @@ var Tower = function () {
     this.towerBullets = [];
     this.cur_bullet_index = 0;
     this.maxTowerBullets = 10;
+    this.aTowerisClicked = false;
 
 }
 
 Tower.prototype.update = function () {
     var self = this;
-    this.aTowerisClicked = false;
-    this.towerClicked = "";
+    //this.aTowerisClicked = false;
+    //this.towerClicked = "";
 
     if (mouselistener.mouseDown === true && this.aTowerisClicked === false) {
         //console.log("how many towers ", this.inventoryTowers.length)
+        //console.log("");
+        console.log("mousedown, atowerisclicked = false");
         // if the user is clicking a tower, set inventoryTowers[i] click to 'true'
         for (var i = 0; i < this.inventoryTowers.length; i++) {
             //console.log("i: ", i)
@@ -74,7 +77,33 @@ Tower.prototype.update = function () {
                 }
             }
         }
+    } else if (mouselistener.mouseDown === true && this.aTowerisClicked === true) {
+        //console.log("how many towers ", this.inventoryTowers.length)
+        //console.log("");
+        //console.log("mousedown, atowerisclicked = false");
+        // if the user is clicking a tower, set inventoryTowers[i] click to 'true'
+         /*
+        for (var i = 0; i < this.inventoryTowers.length; i++) {
+            //console.log("i: ", i)
+            // if mouse is inside width of tower image
+            if ((mouselistener.page_x > this.inventoryTowers[i].left) && this.aTowerisClicked === false && (mouselistener.page_x < (this.inventoryTowers[i].left + this.inventoryTowers[i].width))) {
+                //console.log("click detected, inside width");
+                // if mouse is within height of tower image
+                if ((mouselistener.page_y > this.inventoryTowers[i].top) && this.aTowerisClicked === false && (mouselistener.page_y < (this.inventoryTowers[i].top + this.inventoryTowers[i].height))) {
+                    //console.log("click detected, inside height");
+                    this.aTowerisClicked = true;
+                    this.inventoryTowers[i].click = true;
+                    this.towerClicked = i;
+
+                    //console.log("click = true");
+                }
+            }
+        }
+        */
     } else {
+        this.aTowerisClicked = false;
+        this.towerClicked = "";
+
 
         // if the user is clicking a tower, set inventoryTowers[i] click to 'true'
         for (var i = 0; i < this.inventoryTowers.length; i++) {
@@ -87,6 +116,10 @@ Tower.prototype.update = function () {
         this.inventoryTowers[1].left = 105;
         this.inventoryTowers[2].left = 200;
     }
+
+
+    // if the there is a tower clicked, draw it next to the mouse position
+
     for (var i = 0; i < this.inventoryTowers.length; i++) {
 
         if (this.inventoryTowers[i].click === true) {
@@ -110,26 +143,23 @@ Tower.prototype.update = function () {
     self.addANewTower = function () {
         if (mouselistener.mouseOverCanvas === true) {
             if (money > 0) {
-				var check_tower = this.towerClicked;
-				var can_afford = true;
+                var check_tower = this.towerClicked;
+                var can_afford = true;
 
-			    if (check_tower == 0)
-				{
+                if (check_tower == 0) {
                     if (money - 1 < 0)
-						can_afford = false;
+                        can_afford = false;
                 }
-				else if (check_tower == 1)
-				{
-					if (money - 2 < 0)
-						can_afford = false;
+                else if (check_tower == 1) {
+                    if (money - 2 < 0)
+                        can_afford = false;
                 }
-                else if (check_tower == 2)
-				{
+                else if (check_tower == 2) {
                     if (money - 3 < 0)
-						can_afford = false;
-				}
+                        can_afford = false;
+                }
 
-				if (can_afford) {
+                if (can_afford) {
                     if (check_tower == 0) {
                         if (money -= 1)
                             can_afford = true;
@@ -143,22 +173,22 @@ Tower.prototype.update = function () {
                             can_afford = true;
                     }
                 }
-
-					//create towers
-                createNewTower(this.towerClicked, self.addNewTowerOnRelease.across, self.addNewTowerOnRelease.high);
+                console.log(this.towerClicked)
+                //create towers
+                createNewTower(this.inventoryTowers[this.towerClicked].towerType, self.addNewTowerOnRelease.across, self.addNewTowerOnRelease.high);
 
                 // find the last tower that was added just now (at the end of the array)
-               /* var new_tower = self.allTowers[self.allTowers.length - 1];
+                /* var new_tower = self.allTowers[self.allTowers.length - 1];
 
-                // decrease money based on the 'tower-type' of the last tower added
-                if (new_tower.towerType == 0) {
-                    money -= 1;
-                } else if (new_tower.towerType == 1) {
-                    money -= 2;
-                }
-                else if (new_tower.towerType == 2) {
-                    money -= 3;
-                }*/
+                 // decrease money based on the 'tower-type' of the last tower added
+                 if (new_tower.towerType == 0) {
+                 money -= 1;
+                 } else if (new_tower.towerType == 1) {
+                 money -= 2;
+                 }
+                 else if (new_tower.towerType == 2) {
+                 money -= 3;
+                 }*/
             }
         }
     }
@@ -170,7 +200,6 @@ Tower.prototype.update = function () {
         for (var i = 0; i < 10; i++) {
             new_bullet_pool[i] = new Bullet();
         }
-
 
 
         //push a new tower into the allTowers array
@@ -185,6 +214,7 @@ Tower.prototype.update = function () {
         );
 
     }
+
     //this.jitter = Math.random() * 0.2 - 0.1;
     //this.allTowers[this.cur_bullet_index].fire(this.x, this.y, 1, this.jitter);
     ////this.shoot_cooldown = this.shoot_timer;
