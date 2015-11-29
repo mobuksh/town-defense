@@ -22,7 +22,7 @@ function startWave() {
     waveStarted = true;
     waveFinished = false;
     wave_timer = 0.0;
-
+	enemy = [];
     for (var i = 0; i < wavePopulation; i++) {
         enemy[i] = new Enemy(wave, i);
     }
@@ -51,10 +51,11 @@ function startWave() {
 }
 
 function SpawnEnemy(wavePop) {
-    if (enemy_index < wavePop)
+	console.log("" + enemy.length);
+    if (enemy_index < enemy.length)
         enemy[enemy_index].init_waypoints();
 
-    if (enemy_index <= wavePop)
+    if (enemy_index < enemy.length)
         enemy_index += 1;
 }
 

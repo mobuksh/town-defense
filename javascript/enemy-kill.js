@@ -45,15 +45,14 @@ function checkCollide() {
                         //bullets[j].y - bullets[j].image.height / 2,
                         //bullets[j].y + bullets[j].image.height / 2
                     )) {
-
                     if (enemy[thisEnemy].dead === false) {
-                        enemy[thisEnemy].dead = true;
+					enemy[thisEnemy].health -= 20;
+
+					if (enemy[thisEnemy].health <= 0) {
+						enemy[thisEnemy].dead = true;
                         money += 10;
+					}
                     }
-                    break;
-                    var deadNow = thisEnemy;
-                    enemyDead.push(deadNow);
-                    console.log("collision: enemy", thisEnemy, ", bullet: ", thisBullet)
                     //console.log("enemy: ", thisEnemy, " ", enemy[thisEnemy].dead);
                     //asteroids.splice(i, 1);
                     //bullets.slice(j, 1);
