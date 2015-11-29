@@ -8,6 +8,14 @@ var wave = 1;
 var wavePopulation = 20;
 var wave_timer = 0.0;
 var enemy_index = 0;
+var enemyToShoot;
+//var enemyX;
+//var enemyY;
+var objBullets;
+var shootDirection;
+var shootX;
+var shootY;
+var towerRange = 200; // how far away an object is before it is shot
 
 function startWave() {
 
@@ -56,68 +64,69 @@ function pixelToTile(pixel) {
 
 
 function runGame() {
-    //console.log("Run game lives: ", lives);
-    //if (typeof enemy[0] != 'undefined') {
-    //    console.log("enemy zero dead?: ", enemy[0].dead);
-    //}
+    if (lives < 1) {
+        state = END_STATE;
+    }
+
+    //console.log("nearest: ", nearest);
+    var deltaTime = getDeltaTime();
     context.fillStyle = "green";
     context.fillRect(0, 0, canvas.width, canvas.height);
-
-
-    var deltaTime = getDeltaTime();
-
-    //drawMap(0,0);
-    //drawhud();
-    //drawTowerInventory();
-
-
-    if (mouselistener.mouseDown == true) {
-        context.fillStyle = "#f00";
-        context.font = "14px Arial";
-
-        context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
-        context.fillText("TILE POSITION: " + pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
-
-        var mouse_x = pixelToTile(mouselistener.page_x);
-        var mouse_y = pixelToTile(mouselistener.page_y);
-
-        context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
-    }
     drawMap(0, 0);
     drawhud();
-    //drawTowerInventory();
-    if(keyboard.isKeyDown(keyboard.KEY_ESCAPE)) {
+
+    // DEBUGGER
+    if (keyboard.isKeyDown(keyboard.KEY_ESCAPE)) {
         debugger;
     }
 
-        if (mouselistener.mouseDown == true) {
-        //debugger;
-        //context.fillStyle = "#f00";
-        //context.font = "14px Arial";
-        //
-        //context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
-        //context.fillText("TILE POSITION: " + pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
-        //
-        //var mouse_x = pixelToTile(mouselistener.page_x);
-        //var mouse_y = pixelToTile(mouselistener.page_y);
-        //
-        //context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
-    }
-    context.fillStyle = "#f00";
-    context.font = "14px Arial";
+    /*
+     if (mouselistener.mouseDown == true) {
+     context.fillStyle = "#f00";
+     context.font = "14px Arial";
 
-    context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
-    context.fillText("TILE POSITION: " + pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
+     context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
+     context.fillText("TILE POSITION: " + pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
 
-    var mouse_x = pixelToTile(mouselistener.page_x);
-    var mouse_y = pixelToTile(mouselistener.page_y);
+     var mouse_x = pixelToTile(mouselistener.page_x);
+     var mouse_y = pixelToTile(mouselistener.page_y);
 
-    // cellAtPixelCoord(layer, x, y)
-    var testLayer = "road";
-    context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
-    //context.fillText("LAYER "+ testLayer + ": " + cellAtPixelCoord(testLayer, mouselistener.page_x, mouselistener.page_y), 5, 100);
+     context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
+     }
 
-    //TOWERS
+
+
+
+     if (mouselistener.mouseDown == true) {
+     debugger;
+     context.fillStyle = "#f00";
+     context.font = "14px Arial";
+
+     context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
+     context.fillText("TILE POSITION: " + pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
+
+     var mouse_x = pixelToTile(mouselistener.page_x);
+     var mouse_y = pixelToTile(mouselistener.page_y);
+
+     context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
+     }
+
+
+     context.fillStyle = "#f00";
+     context.font = "14px Arial";
+
+     context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
+     context.fillText("TILE POSITION: " + pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
+
+     var mouse_x = pixelToTile(mouselistener.page_x);
+     var mouse_y = pixelToTile(mouselistener.page_y);
+
+     // cellAtPixelCoord(layer, x, y)
+     var testLayer = "road";
+     context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
+     //context.fillText("LAYER "+ testLayer + ": " + cellAtPixelCoord(testLayer, mouselistener.page_x, mouselistener.page_y), 5, 100);
+     */
+    //UPDATE/DRAW INVENTORY TOWERS AT BOTTOM OF PAGE
     testTower.update();
     testTower.draw(mouselistener.page_x, mouselistener.page_y);
 
@@ -126,17 +135,21 @@ function runGame() {
 
         // if there are enemies and I have shot bullets, check for collisions
         //if ((enemy.length > 0) && towerShootCount > 0) {
-            checkCollide();
+        checkCollide();
+        //if (typeof enemyDead != 'undefined') {
+        //    console.log("enemydead: ", enemyDead);
         //}
+        //}
+        //var neareststart = 100000; // make the default value impossibly large to ensure it is overwritten by a smaller value
+
+
         //LOOP THROUGH EACH TOWER
         for (var thisTower = 0; thisTower < testTower.allTowers.length; thisTower++) {
             //console.log("thisTower: ", thisTower);
             //Cycle through each tower and get the distance from each enemy
             //shoot the enemy that is closest
-            var nearest = canvas.width * 10; // make the default value impossibly large to ensure it is overwritten by a smaller value
-            var towerRange = 200; // how far away an object is before it is shot
-            var enemyToShoot;
 
+            var nearest = 100000;
             // LOOP THROUGH EACH ENEMY AND MEASURE THE DISTANCE TO THE TOWER
             for (var k = 0; k < enemy.length; k++) {
                 // if the enemy is not dead, how far away is it?
@@ -152,6 +165,8 @@ function runGame() {
                 }
                 // this enemy is nearer, make this the new nearest target
                 if (typeof towerRadius != 'undefined') {
+                    //console.log("tower radius has a value");
+
                     //debugger;
                     if (towerRadius.distance < nearest) {
                         nearest = towerRadius.distance;
@@ -162,42 +177,71 @@ function runGame() {
                     }
 
 
-                    //get the mag for this bullet
-                    var shootDirection = shootDirectionMag({
-                        towerX: testTower.allTowers[thisTower].x,
-                        towerY: testTower.allTowers[thisTower].y,
-                        enemyU: enemy[enemyToShoot].x,
-                        enemyV: enemy[enemyToShoot].y
-                    });
-
-
                     //if (
                     //		((distance(enemy[enemyToShoot].x, testTower.allTowers[thisTower].x) < towerRange)) &&
                     //		((distance(enemy[enemyToShoot].y, testTower.allTowers[thisTower].y) < towerRange))
                     //) {
                     //&& typeof enemyToShoot != 'undefined'
-                    if (nearest < towerRange) {
-                        //shoot the bullet
-                        testTower.allTowers[thisTower].thisTowerBullets[towerShootCount].fire(testTower.allTowers[thisTower].x + 25, testTower.allTowers[thisTower].y + 5, shootDirection.normalX, shootDirection.normalY);
-                        //debugger;
-                    }
 
-                    for (var j = 0; j < 10; j++) {
-                        testTower.allTowers[thisTower].thisTowerBullets[j].update(deltaTime);
-                        testTower.allTowers[thisTower].thisTowerBullets[j].draw(10, 10);
-                    }
                 }
+            }
+            // Shoot the enemy that is within range and is closest to this tower
+            if (nearest < towerRange) {
+                //console.log("in range!");
+                // check if this bullet needs jitter and add it if necessary
+                if (testTower.allTowers[thisTower].towerType === 2) {
+
+                    var jitter = (Math.random() * 20);
+                    //console.log("Jitter: ", jitter);
+                    var enemyX = enemy[enemyToShoot].x + jitter;
+                    var enemyY = enemy[enemyToShoot].y + jitter;
+                } else {
+                    var enemyX = enemy[enemyToShoot].x-(TILE/2);
+                    var enemyY = enemy[enemyToShoot].y+(TILE/4);
+                }
+
+                //get the mag for this bullet
+                var shootDirection = shootDirectionMag({
+                    towerX: testTower.allTowers[thisTower].x,
+                    towerY: testTower.allTowers[thisTower].y,
+                    enemyU: enemyX,
+                    enemyV: enemyY
+                });
+
+                //get this towers bullet count
+                objBullets = testTower.allTowers[thisTower].objBulletCount;
+                //console.log("bulletCount: ", objBullets)
+
+                //shootX = shootDirection.normalX;
+                //shootY = shootDirection.normalY;
+                //shoot the bullet
+                testTower.allTowers[thisTower].thisTowerBullets[testTower.allTowers[thisTower].objBulletCount].fire(testTower.allTowers[thisTower].x + 25, testTower.allTowers[thisTower].y + 5, shootDirection.normalX, shootDirection.normalY);
+                //console.log("shot shot a bullet!");
+                //update the bullet count
+                //objBullets++;
+                //var bulletMax = testTower.allTowers[thisTower].objMaxTowerBullets;
+                //console.log("maxBullets: ", bulletMax);
+                if (testTower.allTowers[thisTower].objBulletCount < testTower.allTowers[thisTower].objMaxTowerBullets - 1) {
+                    testTower.allTowers[thisTower].objBulletCount++;
+                } else {
+                    testTower.allTowers[thisTower].objBulletCount = 0;
+                }
+                //debugger;
+            }
+            // update and draw each bullet
+            for (var j = 0; j < testTower.allTowers[thisTower].thisTowerBullets.length; j++) {
+                testTower.allTowers[thisTower].thisTowerBullets[j].update(deltaTime);
+                testTower.allTowers[thisTower].thisTowerBullets[j].draw(10, 10);
 
             }
 
 
         }
 
-
-        towerShootCount++;
-        if (towerShootCount > 9) {
-            towerShootCount = 0;
-        }
+        //towerShootCount++;
+        //if (towerShootCount > 9) {
+        //    towerShootCount = 0;
+        //}
     }
 
     var deathCount = 0;

@@ -24,19 +24,19 @@ function checkCollide() {
     for (var thisTower = 0; thisTower < testTower.allTowers.length; thisTower++) {
         //console.log("check towers");
         //console.log("how many towers: ", testTower.allTowers.length)
-        for (var thisBullet = 0; thisBullet < testTower.allTowers[thisTower].thisTowerBullets.length; thisBullet++) {
-            //console.log("check bullets: ", testTower.allTowers[thisTower].thisTowerBullets[thisBullet].x, testTower.allTowers[thisTower].thisTowerBullets[thisBullet].y);
-            for (var thisEnemy = 0; thisEnemy < enemy.length; thisEnemy++) {
+        //console.log("check bullets: ", testTower.allTowers[thisTower].thisTowerBullets[thisBullet].x, testTower.allTowers[thisTower].thisTowerBullets[thisBullet].y);
+        for (var thisEnemy = 0; thisEnemy < enemy.length; thisEnemy++) {
+            for (var thisBullet = 0; thisBullet < testTower.allTowers[thisTower].thisTowerBullets.length; thisBullet++) {
                 //console.log("check enemy: ", enemy[thisEnemy].x, enemy[thisEnemy].y);
                 if (AABB(
                         testTower.allTowers[thisTower].thisTowerBullets[thisBullet].x,
                         testTower.allTowers[thisTower].thisTowerBullets[thisBullet].x + testTower.allTowers[thisTower].thisTowerBullets[thisBullet].image.width,
                         testTower.allTowers[thisTower].thisTowerBullets[thisBullet].y,
                         testTower.allTowers[thisTower].thisTowerBullets[thisBullet].y + testTower.allTowers[thisTower].thisTowerBullets[thisBullet].image.height,
-                        enemy[thisEnemy].x + (TILE * 1.5),
-                        (enemy[thisEnemy].x + (TILE * 1.5)) + enemy[thisEnemy].image.width,
-                        enemy[thisEnemy].y + (TILE * 1.5),
-                        (enemy[thisEnemy].y + TILE * 1.5) + enemy[thisEnemy].image.height
+                        enemy[thisEnemy].x + (TILE),
+                        (enemy[thisEnemy].x + (TILE)) + enemy[thisEnemy].image.width,
+                        enemy[thisEnemy].y + (TILE),
+                        (enemy[thisEnemy].y + TILE) + enemy[thisEnemy].image.height
                         //testTower.allTowers[i].x,
                         //testTower.allTowers[i].x + testTower.allTowers[i].x.width,
                         //testTower.allTowers[i].y,
@@ -45,12 +45,20 @@ function checkCollide() {
                         //bullets[j].y - bullets[j].image.height / 2,
                         //bullets[j].y + bullets[j].image.height / 2
                     )) {
-                    enemy[thisEnemy].dead = true;
+
+                    if (enemy[thisEnemy].dead === false) {
+                        enemy[thisEnemy].dead = true;
+                        money += 10;
+                    }
+                    break;
+                    var deadNow = thisEnemy;
+                    enemyDead.push(deadNow);
+                    console.log("collision: enemy", thisEnemy, ", bullet: ", thisBullet)
                     //console.log("enemy: ", thisEnemy, " ", enemy[thisEnemy].dead);
                     //asteroids.splice(i, 1);
                     //bullets.slice(j, 1);
                     //gameScore++;
-                    break;
+
                 }
             }
         }

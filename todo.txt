@@ -2,18 +2,57 @@
         > issue: everything EXCEPT what is in the tower range is currently dying
             - drawing the x and y next to each enemy
             - slowing down bullets and altering to 3 bullets with positions printing
+
+// SATURDAY
 > fix dropping of towers onto path
     > towers should not be droppable on path
     > red color for hover where tile is not allowed
-> fix multiple towers becoming selected when mouse hovers
+    > fix multiple towers becoming selected when mouse hovers
 
-+ (optional) add enemy health depletion
 + make each tower different
+    1) tower one - as is
+    2) tower 2 - more bullets
+    3) tower 3 - more bullets and jitter
     + add more jitter + bullets for different tower types
     + (optional) make the enemy shoot direction compensate based
       on distance (get distance on fire and add to x/y)
-+ add cash for enemy kills
++ when lives = 0, gamestate = end screen
++ add cash for enemy kills (change cost to $10, $20, $30)
++ end game on 0 lives, refresh page when spacebar is pressed
++ CONSOLIDATE LOOPS TO FIX LOOP ISSUES (affects bullet firing and collisions)
+
+// SUNDAY
 + add music and artwork (sfx if there is time)
+    + (ESSENTIAL) put cash label on towers
     + change opening image (creative commons spooky image)
     + spooky sound track
     + play death sound when enemy dies
+
++ (optional) add enemy health depletion
+
+
+SCRATCHPAD:
+
+Loops
+fnc rungame
+    if towers on map
+        checkCollide()
+        loop through towers
+            loop through enemies
+            get distance from each tower to each enemy
+            if enemy x is in range
+                get closest enemy and shoot
+
+
+
+
+Towers
+all towers are firing bullets at the one enemy
+this enemy is the one that is closest to the first tower that is
+in range
+
+{ bullets shoot x number of bullets, refresh bullets based on inventory bullet #}
+towershootcount is a universal count in 'game_state.js:197'
+bullets shot on 'main.js:181'
+get towers own counter and update count on fire, if count is higher than max bullets, reset to zero
+"thistowerbullets" is attached to each tower (pushed) as an array of new bullets

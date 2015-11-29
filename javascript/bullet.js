@@ -1,8 +1,4 @@
-/**
- * Created by mrcheese on 29/09/15.
- */
-
-var BULLET_SPEED = 20;
+var BULLET_SPEED = 100;
 
 var Bullet = function () {
     this.image = document.createElement("img"),
@@ -13,6 +9,7 @@ var Bullet = function () {
     this.velocity_y = 0;
     this.dead = true;
     this.exited_canvas = false;
+    this.bullet_speed = 250;
 }
 
 Bullet.prototype.fire = function(origin_x, origin_y, dir_x, dir_y) {
@@ -29,8 +26,8 @@ Bullet.prototype.fire = function(origin_x, origin_y, dir_x, dir_y) {
 
 Bullet.prototype.update = function (deltaTime) {
     if (!this.dead) {
-        this.x += this.velocity_x * deltaTime * BULLET_SPEED;
-        this.y += this.velocity_y * deltaTime * BULLET_SPEED;
+        this.x += this.velocity_x * deltaTime * this.bullet_speed;
+        this.y += this.velocity_y * deltaTime * this.bullet_speed;
 
         if(this.x < 0 || this.x > MAP.tw * TILE || this.y < 0 || this.y > MAP.th * TILE)
         {
