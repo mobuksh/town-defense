@@ -45,7 +45,12 @@ function checkCollide() {
                         //bullets[j].y - bullets[j].image.height / 2,
                         //bullets[j].y + bullets[j].image.height / 2
                     )) {
-                    enemy[thisEnemy].dead = true;
+                    
+					enemy[thisEnemy].health -= 20;
+					
+					if (enemy[thisEnemy].health <= 0) {
+						enemy[thisEnemy].dead = true;
+					}
                     //console.log("enemy: ", thisEnemy, " ", enemy[thisEnemy].dead);
                     //asteroids.splice(i, 1);
                     //bullets.slice(j, 1);
