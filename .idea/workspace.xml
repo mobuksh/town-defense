@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30e8d38f-32f8-46a0-bc78-20ee0f345f2a" name="Default" comment="ADDED: Towers now have different types/amounts of bullets. FIXED: MAJOR performance improvement with large amount sof bullets. IMPROVED: Bullet collision accuracy WORKS: Game states now work and page refresh works for end of game restart.&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javascript/towers-draw.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javascript/towers-update.js" />
+    <list default="true" id="30e8d38f-32f8-46a0-bc78-20ee0f345f2a" name="Default" comment="double-commit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/bullet.js" afterPath="$PROJECT_DIR$/javascript/bullet.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/end_state.js" afterPath="$PROJECT_DIR$/javascript/end_state.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/enemy-kill.js" afterPath="$PROJECT_DIR$/javascript/enemy-kill.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/game_state.js" afterPath="$PROJECT_DIR$/javascript/game_state.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/main.js" afterPath="$PROJECT_DIR$/javascript/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/menu_state.js" afterPath="$PROJECT_DIR$/javascript/menu_state.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/towers.js" afterPath="$PROJECT_DIR$/javascript/towers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/todo.txt" afterPath="$PROJECT_DIR$/todo.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/towers-update.js" afterPath="$PROJECT_DIR$/javascript/towers-update.js" />
     </list>
     <ignored path="town-defense.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,20 +52,20 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="towers-update.js" pinned="false" current-in-tab="false">
+              <file leaf-file-name="towers-update.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/javascript/towers-update.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.0">
-                      <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+                    <state vertical-scroll-proportion="0.4651163">
+                      <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
                       <folding />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="menu_state.js" pinned="false" current-in-tab="true">
+              <file leaf-file-name="menu_state.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/javascript/menu_state.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.37688443">
+                    <state vertical-scroll-proportion="0.0">
                       <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
                       <folding />
                     </state>
@@ -86,7 +79,7 @@
               <file leaf-file-name="todo.txt" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/todo.txt">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="-0.6423358">
+                    <state vertical-scroll-proportion="-0.98876405">
                       <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
                       <folding />
                     </state>
@@ -105,8 +98,11 @@
                 <entry file="file://$PROJECT_DIR$/javascript/enemy-kill.js">
                   <provider selected="true" editor-type-id="text-editor">
                     <state vertical-scroll-proportion="0.0">
-                      <caret line="49" column="53" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
-                      <folding />
+                      <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+                      <folding>
+                        <marker date="1448793626000" expanded="true" signature="699:809" placeholder="//..." />
+                        <marker date="1448793626000" expanded="true" signature="3004:3022" placeholder="{...}" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -124,8 +120,8 @@
               <file leaf-file-name="game_state.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/javascript/game_state.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.39968652">
-                      <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+                    <state vertical-scroll-proportion="0.28639618">
+                      <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
                       <folding />
                     </state>
                   </provider>
@@ -178,7 +174,7 @@
               <file leaf-file-name="bullet.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/javascript/bullet.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="1.0526316">
+                    <state vertical-scroll-proportion="1.6981132">
                       <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
                       <folding />
                     </state>
@@ -216,7 +212,6 @@
         <option value="$PROJECT_DIR$/javascript/level.js" />
         <option value="$PROJECT_DIR$/javascript/towers-draw.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/javascript/towers-update.js" />
         <option value="$PROJECT_DIR$/javascript/towers.js" />
         <option value="$PROJECT_DIR$/javascript/main.js" />
         <option value="$PROJECT_DIR$/javascript/bullet.js" />
@@ -224,6 +219,7 @@
         <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/javascript/menu_state.js" />
         <option value="$PROJECT_DIR$/javascript/end_state.js" />
+        <option value="$PROJECT_DIR$/javascript/towers-update.js" />
         <option value="$PROJECT_DIR$/javascript/game_state.js" />
       </list>
     </option>
@@ -561,33 +557,39 @@
       <option name="project" value="LOCAL" />
       <updated>1448680209662</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="ADDED: Towers now have different types/amounts of bullets firing correctly. FIXED: MAJOR performance improvement with large amounts of bullets. FIXED: Bullet collision accuracy WORKS: Game states now work and page refresh works for end of game restart.&#10;">
+      <created>1448793113573</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1448793113573</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="982" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3263889" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12332112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256351" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32678983" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16974595" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39954075" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16974595" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -625,7 +627,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="Towers: basic functionality for placing towers on map now works. Need to add functionality for more towers and restricting of tower placement to allowed grid positions (based of level data)." />
     <MESSAGE value="Towers: added two more types of towers and object array basics. Missing functionality: Need to make extra towers draggable, and drawable when placed on map." />
     <MESSAGE value="+ tower images that were missed in the previous commit" />
     <MESSAGE value="1st and second tower are starting to work, still buggy - two towers draw on dragging event instead of one. Towers are being detected and drawn in the wrong places." />
@@ -650,7 +651,8 @@
     <MESSAGE value="FIXED: bullet collisions" />
     <MESSAGE value="adding some missed files" />
     <MESSAGE value="FIXED: multiple tower selection bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="FIXED: multiple tower selection bug" />
+    <MESSAGE value="ADDED: Towers now have different types/amounts of bullets firing correctly. FIXED: MAJOR performance improvement with large amounts of bullets. FIXED: Bullet collision accuracy WORKS: Game states now work and page refresh works for end of game restart.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADDED: Towers now have different types/amounts of bullets firing correctly. FIXED: MAJOR performance improvement with large amounts of bullets. FIXED: Bullet collision accuracy WORKS: Game states now work and page refresh works for end of game restart.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -969,7 +971,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/javascript/bullet.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0526316">
+        <state vertical-scroll-proportion="1.6981132">
           <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
           <folding />
         </state>
@@ -978,14 +980,17 @@
     <entry file="file://$PROJECT_DIR$/javascript/enemy-kill.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="53" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
-          <folding />
+          <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+          <folding>
+            <marker date="1448793626000" expanded="true" signature="699:809" placeholder="//..." />
+            <marker date="1448793626000" expanded="true" signature="3004:3022" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/todo.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6423358">
+        <state vertical-scroll-proportion="-0.98876405">
           <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
           <folding />
         </state>
@@ -1007,17 +1012,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/towers-update.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/javascript/menu_state.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37688443">
+        <state vertical-scroll-proportion="0.0">
           <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
           <folding />
         </state>
@@ -1039,10 +1036,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/towers-update.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4651163">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/javascript/game_state.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39968652">
-          <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.28639618">
+          <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
           <folding />
         </state>
       </provider>

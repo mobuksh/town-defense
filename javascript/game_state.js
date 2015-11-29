@@ -51,7 +51,7 @@ function startWave() {
 }
 
 function SpawnEnemy(wavePop) {
-	console.log("" + enemy.length);
+	//console.log("" + enemy.length);
     if (enemy_index < enemy.length)
         enemy[enemy_index].init_waypoints();
 

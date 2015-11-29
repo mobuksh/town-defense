@@ -6,7 +6,7 @@ Tower.prototype.update = function () {
     if (mouselistener.mouseDown === true && this.aTowerisClicked === false) {
         //console.log("how many towers ", this.inventoryTowers.length)
         //console.log("");
-        console.log("mousedown, atowerisclicked = false");
+        //console.log("mousedown, atowerisclicked = false");
         // if the user is clicking a tower, set inventoryTowers[i] click to 'true'
         for (var i = 0; i < this.inventoryTowers.length; i++) {
             //console.log("i: ", i)
