@@ -9,7 +9,7 @@ var Bullet = function () {
     this.velocity_y = 0;
     this.dead = true;
     this.exited_canvas = false;
-    this.bullet_speed = 30;
+    this.bullet_speed = 250;
 }
 
 Bullet.prototype.fire = function(origin_x, origin_y, dir_x, dir_y) {

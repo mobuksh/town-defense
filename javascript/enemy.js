@@ -2,7 +2,7 @@ var Enemy = function(level, index) {
 	this.type = level;
 	this.health = 100 * level;
 	
-	this.speed = 100;
+	this.speed = 500 * level / 2;
 	
 	this.tile_x = 1;
 	this.tile_y = -5;
@@ -33,6 +33,7 @@ Enemy.prototype.init_waypoints = function()
 		
 	// Tile Coordinates in Pixels
 	this.dead = false;
+	this.waypointIndex = 0;
 	this.waypoints_x = [35, 35, 280, 280, 700, 700];
 	this.waypoints_y = [-35, 420, 420, 105, 105, 595];
 }
@@ -56,6 +57,37 @@ Enemy.prototype.update = function(deltatime) {
 	if (this.dead) {
 		return;
 	}
+
+	// Resets the Enemy position if it has glitched further than the waypoints boundaries.
+	switch(this.waypointIndex) {
+		case 1:
+		if (this.y > this.waypoints_y[this.waypointIndex]) {
+			this.y = this.waypoints_y[this.waypointIndex];
+		}
+		break;
+		case 2:
+		if (this.x > this.waypoints_x[this.waypointIndex]) {
+			this.x = this.waypoints_x[this.waypointIndex];
+		}
+		break;
+		case 3:
+		if (this.y < this.waypoints_y[this.waypointIndex]) {
+			this.y = this.waypoints_y[this.waypointIndex];
+		}
+		break;
+		case 4:
+		if (this.x > this.waypoints_x[this.waypointIndex]) {
+			this.x = this.waypoints_x[this.waypointIndex];
+		}
+		break;
+		case 5:
+		if (this.y > this.waypoints_y[this.waypointIndex]) {
+			this.y = this.waypoints_y[this.waypointIndex];
+		}
+		break;
+
+	}
+
 	if (Math.floor(this.x) == 700 && Math.floor(this.y) == 595) {
 			subtractLife();
 			this.dead = true;
