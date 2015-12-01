@@ -25,7 +25,7 @@ var Tower = function () {
         click: false,
         width: 70,
         height: 70,
-        maxBullets:  10,
+        maxBullets:  3,
         bulletCounter: 0,
         jitter: false
     };
@@ -38,7 +38,7 @@ var Tower = function () {
         click: false,
         width: 70,
         height: 70,
-        maxBullets:  25,
+        maxBullets:  5,
         bulletCounter: 0,
         jitter: true
     };

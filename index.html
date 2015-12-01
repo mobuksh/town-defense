@@ -23,6 +23,7 @@
             visibility: hidden;
             /*visibility: ;*/
         }
+
         .town {
             width: 300px;
             float: right;
@@ -68,15 +69,24 @@
 <script>
     var townImage = document.getElementById('town');
     //    var townImage = document.getElementById('town');
-    function townHideShow(){
-        if (state === GAME_STATE){
+    function townHideShow() {
+        if (state === GAME_STATE) {
             townImage.style.visibility = 'visible';
         } else {
             townImage.style.visibility = 'hidden';
         }
     }
+//    if (navigator.onLine === true) {
+//        // Create a new paragraph element, and append it to the end of the document body
+////        var p = document.createElement("<link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>");
+////        document.body.appendChild(p);
+////        console.log("online");
+//
+//
+//    } else {
+//        console.log("OFFLINE")
+//    }
 </script>
-<link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
-
+<!--<link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>-->
 </body>
 </html>
