@@ -4,7 +4,7 @@ heart.src = ("images/balloonheart.png");
 var moneybag = document.createElement("img");
 moneybag.src = ("images/money-bag-resize-2.png");
 
-var money = 100;
+var money = 10;
 var lives = 10;
 
 function drawhud() {

@@ -2,8 +2,7 @@ var Enemy = function(level, index) {
 	this.type = level;
 	this.health = 100 * level;
 	
-	this.speed = 100 * level / 2;
-	
+	this.speed = 225 * level / 2;
 	this.tile_x = 1;
 	this.tile_y = -5;
 	this.index = index;

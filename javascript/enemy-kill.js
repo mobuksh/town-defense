@@ -67,13 +67,14 @@ function checkCollide() {
 
                         if ((enemy[thisEnemy].health <= 0 || (enemy[thisEnemy].health - 20 <= 0)) && !enemy[thisEnemy].dead) {
                             enemy[thisEnemy].dead = true;
+                            GhostDeath.play();
+
                             money += 10;
                         }
 
                         if (!enemy[thisEnemy].dead) {
                             enemy[thisEnemy].health -= 20;
                             //console.log("Enemy Health" + enemy[thisEnemy].health);
-                            GhostDeath.play();
 
                         }
                         //console.log("enemy: ", thisEnemy, " ", enemy[thisEnemy].dead);
