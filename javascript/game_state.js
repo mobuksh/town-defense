@@ -264,7 +264,7 @@ function runGame() {
         waveStarted = false;
         wave += 1;
 		enemy = [];
-		console.log("Starting Wave # " + wave);
+		//console.log("Starting Wave # " + wave);
 
     }
 
@@ -275,7 +275,7 @@ function runGame() {
 
     if (!waveStarted || waveFinished) {
         startWave(wave, wavePop);
-		console.log("wave Population:" + wavePop);
+		//console.log("wave Population:" + wavePop);
     }
     else {
         wave_timer += deltaTime;

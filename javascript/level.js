@@ -178,11 +178,11 @@ function drawMap(cam_x, cam_y)
 
 function cellAtPixelCoord(layer, x, y)
 {
-	if (x < 0 || x > SCREEN_WIDTH || y < 0)
-		return 1;
-
-	if (y > SCREEN_HEIGHT)
-		return 0;
+	//if (x < 0 || x > SCREEN_WIDTH || y < 0)
+	//	return 1;
+    //
+	//if (y > SCREEN_HEIGHT)
+	//	return 0;
 	
 	return cellAtTileCoord(layer, pixelToTile(x), pixelToTile(y));
 }

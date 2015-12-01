@@ -43,7 +43,7 @@ function checkCollide() {
                     ) === false
 
                 ) {
-                    console.log("true");
+                    //console.log("true");
 
                     //console.log("check");
                     if (AABB(
@@ -72,7 +72,7 @@ function checkCollide() {
 
                         if (!enemy[thisEnemy].dead) {
                             enemy[thisEnemy].health -= 20;
-                            console.log("Enemy Health" + enemy[thisEnemy].health);
+                            //console.log("Enemy Health" + enemy[thisEnemy].health);
 
                         }
                         //console.log("enemy: ", thisEnemy, " ", enemy[thisEnemy].dead);

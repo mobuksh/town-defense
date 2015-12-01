@@ -1,4 +1,5 @@
 var enemyDead = [];
+var onRoad = false;
 var canvas = document.getElementById("gameCanvas");
 var context = canvas.getContext("2d");
 
@@ -107,7 +108,7 @@ var music = new Howl(
 //UNCOMMENT FOR MUSIC, add new music first 
 //music.play();
 var jitter = Math.random() * 0.2 - 0.1;
-console.log(jitter);
+//console.log(jitter);
 //bullet.fire(100, 100, 1, jitter);
 
 var towerShootCount = 0;

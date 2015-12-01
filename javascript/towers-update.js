@@ -63,55 +63,59 @@ Tower.prototype.update = function () {
 
     // check if conditions are right to create a new tower, if yes, send off to 'createNewTower' function for array push
     self.addANewTower = function () {
-        if (mouselistener.mouseOverCanvas === true) {
-            if (money > 0) {
-                var check_tower = this.towerClicked;
-                var can_afford = true;
+        if (!cellAtPixelCoord(2, mouselistener.page_x, mouselistener.page_y)) {
+            onRoad = false;
+            if (mouselistener.mouseOverCanvas === true) {
+                if (money > 0) {
+                    var check_tower = this.towerClicked;
+                    var can_afford = true;
 
-                if (check_tower == 0) {
-                    if (money - 1 < 0)
-                        can_afford = false;
-                }
-                else if (check_tower == 1) {
-                    if (money - 2 < 0)
-                        can_afford = false;
-                }
-                else if (check_tower == 2) {
-                    if (money - 3 < 0)
-                        can_afford = false;
-                }
-
-                if (can_afford) {
-                    if (check_tower === 0) {
-                        if (money -= 10)
-                            can_afford = true;
+                    if (check_tower == 0) {
+                        if (money - 10 < 0)
+                            can_afford = false;
                     }
-                    else if (check_tower === 1) {
-                        if (money -= 20)
-                            can_afford = true;
+                    else if (check_tower == 1) {
+                        if (money - 20 < 0)
+                            can_afford = false;
                     }
-                    else if (check_tower === 2) {
-                        if (money -= 30)
-                            can_afford = true;
+                    else if (check_tower == 2) {
+                        if (money - 30 < 0)
+                            can_afford = false;
                     }
+
+                    if (can_afford === true) {
+                        if (check_tower === 0) {
+                            money -= 10;
+
+                        }
+                        else if (check_tower === 1) {
+                            money -= 20;
+                        }
+                        else if (check_tower === 2) {
+                            money -= 30;
+
+                        }
+
+                        //console.log(this.towerClicked)
+                        //create towers
+                        createNewTower(this.inventoryTowers[this.towerClicked].towerType, self.addNewTowerOnRelease.across, self.addNewTowerOnRelease.high);
+                    }
+                    // find the last tower that was added just now (at the end of the array)
+                    /* var new_tower = self.allTowers[self.allTowers.length - 1];
+
+                     // decrease money based on the 'tower-type' of the last tower added
+                     if (new_tower.towerType == 0) {
+                     money -= 1;
+                     } else if (new_tower.towerType == 1) {
+                     money -= 2;
+                     }
+                     else if (new_tower.towerType == 2) {
+                     money -= 3;
+                     }*/
                 }
-                console.log(this.towerClicked)
-                //create towers
-                createNewTower(this.inventoryTowers[this.towerClicked].towerType, self.addNewTowerOnRelease.across, self.addNewTowerOnRelease.high);
-
-                // find the last tower that was added just now (at the end of the array)
-                /* var new_tower = self.allTowers[self.allTowers.length - 1];
-
-                 // decrease money based on the 'tower-type' of the last tower added
-                 if (new_tower.towerType == 0) {
-                 money -= 1;
-                 } else if (new_tower.towerType == 1) {
-                 money -= 2;
-                 }
-                 else if (new_tower.towerType == 2) {
-                 money -= 3;
-                 }*/
             }
+        } else {
+            onRoad = true;
         }
     }
 

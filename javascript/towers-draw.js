@@ -23,7 +23,11 @@ Tower.prototype.draw = function () {
 
             context.beginPath();
             context.rect(this.addNewTowerOnRelease.across * 35, this.addNewTowerOnRelease.high * 35, TILE, TILE);
-            context.fillStyle = "green";
+            if (onRoad === false) {
+                context.fillStyle = "green";
+            } else {
+                context.fillStyle = "red";
+            }
             context.globalAlpha = 0.5;
 
             context.fill();
