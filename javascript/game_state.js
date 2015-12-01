@@ -70,7 +70,7 @@ function pixelToTile(pixel) {
 
 
 function runGame() {
-
+    //console.log(towerClicked);
     if (lives < 1) {
         state = END_STATE;
     }

@@ -4,6 +4,7 @@ Tower.prototype.update = function () {
     //this.towerClicked = "";
 
     if (mouselistener.mouseDown === true && this.aTowerisClicked === false) {
+        towerClicked = false;
         //console.log("how many towers ", this.inventoryTowers.length)
         //console.log("");
         //console.log("mousedown, atowerisclicked = false");
@@ -25,8 +26,9 @@ Tower.prototype.update = function () {
             }
         }
     } else if (mouselistener.mouseDown === true && this.aTowerisClicked === true) {
-        // Do nothing
+        towerClicked = true
     } else {
+       // towerClicked = false;
         this.aTowerisClicked = false;
         this.towerClicked = "";
 
@@ -65,7 +67,7 @@ Tower.prototype.update = function () {
     self.addANewTower = function () {
         if (!cellAtPixelCoord(2, mouselistener.page_x, mouselistener.page_y)) {
             onRoad = false;
-            if (mouselistener.mouseOverCanvas === true) {
+            if (mouselistener.mouseOverCanvas === true && towerClicked === true) {
                 if (money > 0) {
                     var check_tower = this.towerClicked;
                     var can_afford = true;
@@ -115,6 +117,7 @@ Tower.prototype.update = function () {
                 }
             }
         } else {
+            towerClicked = false;
             onRoad = true;
         }
     }

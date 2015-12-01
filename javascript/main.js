@@ -2,6 +2,7 @@ var enemyDead = [];
 var onRoad = false;
 var canvas = document.getElementById("gameCanvas");
 var context = canvas.getContext("2d");
+var towerClicked = false;
 
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
