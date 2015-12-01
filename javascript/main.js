@@ -182,9 +182,9 @@ function run() {
                 is_ned_music_playing = false;
             }
 
-            if (window.onload === true ) {
-                townHideShow();
-            }            //townImage.style.visibility = 'hidden';
+            //if (window.onload === true ) {
+            //    townHideShow();
+            //}            //townImage.style.visibility = 'hidden';
             runMenu();
             break;
         case(GAME_STATE):
@@ -203,6 +203,10 @@ function run() {
             //townImage.style.visibility == 'visible';
             //if (window.onload === true ) {
                 townHideShow();
+            //} else {
+
+            //townImage.style.visibility = 'visible';
+
             //}
             runGame();
             break;
