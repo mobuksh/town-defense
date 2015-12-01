@@ -117,6 +117,11 @@ function pixelToTile(pixel) {
     return Math.floor(pixel / TILE);
 }
 
+var GhostDeath = new Howl ({
+	urls: ["audio/GhostDeathSound.wav"],
+	buffer: true,
+	volume: 0.5
+});
 
 var menu_music = new Howl({
     urls: ["audio/kevin-macleod-the-lift.mp3"],

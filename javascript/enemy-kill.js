@@ -52,7 +52,10 @@ function checkCollide() {
                             enemy[thisEnemy].dead = true;
                             money += 10;
                         }
-                    }
+                    
+						GhostDeath.play();
+					
+					}
                     //console.log("enemy: ", thisEnemy, " ", enemy[thisEnemy].dead);
                     //asteroids.splice(i, 1);
                     //bullets.slice(j, 1);
