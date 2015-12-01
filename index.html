@@ -4,30 +4,65 @@
     <meta charset="UTF-8">
     <title>
         Assessment Platform Game
-  </title>
+    </title>
+    <style>
+        .header {
+            margin: auto;
+            width: 1050px;
+        }
+
+        #gameCanvas {
+            margin: auto;
+            padding-top: 10px;
+            /*position: relative;*/
+            /*z-index: 100;*/
+        }
+        .hut {
+            float: right;
+            width: 150px;
+        }
+        .bridge {
+            width: 300px;
+            float: right;
+            position: relative;
+            left: -80px;
+            top: -39px;
+        }
+    </style>
 </head>
-  <body>
-    <canvas id="gameCanvas" width="1050" height="700" style="margin-left: 50px;">
-          This text is displayed if your browser does not support HTML5.
-    </canvas>
-	<script src="javascript/mouse.js"></script>
-	<script src="javascript/keyboard.js"></script>
-	<script src="javascript/end_state.js"></script>
-	<script src="javascript/menu_state.js"></script>
-	<script src="javascript/game_state.js"></script>
-	<script src="javascript/HUD.js"></script>
-	<script src="javascript/vector2.js"></script>
-	<script src="javascript/howler.js"></script>
-	<script src="javascript/sprite.js"></script>
-	<script src="javascript/level.js"></script>
-	<script src="javascript/player.js"></script>
-	<script src="javascript/bullet.js"></script>
-    <script src="javascript/towers.js"></script>
-    <script src="javascript/towers-update.js"></script>
-    <script src="javascript/towers-draw.js"></script>
-	<script src="javascript/enemy.js"></script>
-	<script src="javascript/bullet-direction.js"></script>
-	<script src="javascript/enemy-kill.js"></script>
-    <script src="javascript/main.js"></script>
-  </body>
+<body style="background-color: black; color: MAROON; font-family: 'Fredericka the Great', cursive;">
+<div>
+    <div class="header">
+        <img src="images/graveyard-vector-01.png" width="200px" style="float:left">
+
+        <h1 style="font-size: 3em; margin: 0px 0px 0px 5em;">TOWN DEFENSE</h1>
+        <canvas id="gameCanvas" width="1050px" height="700px">
+            This text is displayed if your browser does not support HTML5.
+        </canvas>
+        <script src="javascript/mouse.js"></script>
+        <script src="javascript/keyboard.js"></script>
+        <script src="javascript/end_state.js"></script>
+        <script src="javascript/menu_state.js"></script>
+        <script src="javascript/game_state.js"></script>
+        <script src="javascript/HUD.js"></script>
+        <script src="javascript/vector2.js"></script>
+        <script src="javascript/howler.js"></script>
+        <script src="javascript/sprite.js"></script>
+        <script src="javascript/level.js"></script>
+        <script src="javascript/player.js"></script>
+        <script src="javascript/bullet.js"></script>
+        <script src="javascript/towers.js"></script>
+        <script src="javascript/towers-update.js"></script>
+        <script src="javascript/towers-draw.js"></script>
+        <script src="javascript/enemy.js"></script>
+        <script src="javascript/bullet-direction.js"></script>
+        <script src="javascript/enemy-kill.js"></script>
+        <script src="javascript/main.js"></script>
+        <!--<img class="hut" src="images/hut-350.png">-->
+        <img class="bridge" src="images/town-03.png">
+    </div>
+</div>
+<link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
+
+</body>
 </html>

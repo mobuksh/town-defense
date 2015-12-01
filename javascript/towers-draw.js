@@ -1,3 +1,4 @@
+var offsetY = 0.6;
 Tower.prototype.draw = function () {
     context.save();
 
@@ -34,7 +35,41 @@ Tower.prototype.draw = function () {
             context.globalAlpha = 1;
             context.drawImage(this.inventoryTowers[i].imageIcon, this.inventoryTowers[i].left, this.inventoryTowers[i].top, this.inventoryTowers[i].width, this.inventoryTowers[i].height);
 
-            //console.log("drawn");
+            // first tower label
+            context.globalAlpha = .4;
+            context.beginPath();
+            context.arc(priceLabelCenterX+(priceLabelOffset *.9), priceLabelCenterY-(priceLabelOffset * offsetY), priceLabelRadius, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            // first tower text
+            context.globalAlpha = 1;
+            context.fillStyle = "maroon";
+            context.font = "15px Arial";
+            context.fillText("$10", priceLabelCenterX, priceLabelCenterY-4);
+
+            // second tower label
+            context.globalAlpha = .5;
+            context.beginPath();
+            context.arc(priceLabelCenterX+(priceLabelOffset +100), priceLabelCenterY-(priceLabelOffset * offsetY), priceLabelRadius, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            // second tower text
+            context.globalAlpha = 1;
+            context.fillStyle = "maroon";
+            context.font = "15px Arial";
+            context.fillText("$20", priceLabelCenterX+102, priceLabelCenterY-4 );
+
+            // third tower label
+            context.globalAlpha = .8;
+            context.beginPath();
+            context.arc(priceLabelCenterX+(priceLabelOffset +200), priceLabelCenterY-(priceLabelOffset * offsetY), priceLabelRadius, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            // third tower text
+            context.globalAlpha = 1;
+            context.fillStyle = "maroon";
+            context.font = "15px Arial";
+            context.fillText("$30", priceLabelCenterX+202, priceLabelCenterY-4 );
 
         }
     }

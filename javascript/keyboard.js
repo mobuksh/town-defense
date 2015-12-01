@@ -28,14 +28,17 @@ var Keyboard = function() {
 Keyboard.prototype.onKeyDown = function(evt) 
 {
 	this.keys[evt.keyCode] = true;
+	evt.preventDefault();
 };
 
 Keyboard.prototype.onKeyUp = function(evt) 
 {
 	this.keys[evt.keyCode] = false;
+	evt.preventDefault();
 };
 
 Keyboard.prototype.isKeyDown = function(keyCode)
 {
 	return this.keys[keyCode];
+	evt.preventDefault();
 };

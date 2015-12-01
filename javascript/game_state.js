@@ -16,6 +16,10 @@ var shootDirection;
 var shootX;
 var shootY;
 var towerRange = 200; // how far away an object is before it is shot
+var priceLabelRadius = 18;
+var priceLabelCenterX = 35;
+var priceLabelCenterY = 690;
+var priceLabelOffset = 15;
 
 function startWave() {
 
@@ -65,13 +69,14 @@ function pixelToTile(pixel) {
 
 
 function runGame() {
+
     if (lives < 1) {
         state = END_STATE;
     }
 
     //console.log("nearest: ", nearest);
     var deltaTime = getDeltaTime();
-    context.fillStyle = "green";
+    context.fillStyle = "black";
     context.fillRect(0, 0, canvas.width, canvas.height);
     drawMap(0, 0);
     drawhud();
@@ -374,5 +379,18 @@ function runGame() {
 
      //ENEMIES
      */
+    var tombstone = document.createElement("img");
+    tombstone.src = ("images/tombstone.png");
+
+    context.save;
+    context.drawImage(tombstone, 70, 0, 35, 35);
+    context.restore;
+
+    //var farm = document.createElement("img");
+    //farm.src = ("images/farm.svg");
+    //
+    //context.save;
+    //context.drawImage(farm, 70, 0, 35, 35);
+    //context.restore;
 }
 	

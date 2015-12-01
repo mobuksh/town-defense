@@ -16,7 +16,7 @@ var Enemy = function(level, index) {
 	
 	this.image = document.createElement("img");
 	
-	this.image.src = "images/enemy/final/GhostTemp.png";
+	this.image.src = "images/ghost-01.png";
 
 	this.waypoints_x = [];
 	this.waypoints_y = [];

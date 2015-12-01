@@ -83,15 +83,15 @@ Tower.prototype.update = function () {
 
                 if (can_afford) {
                     if (check_tower == 0) {
-                        if (money -= 1)
+                        if (money -= 10)
                             can_afford = true;
                     }
                     else if (check_tower == 1) {
-                        if (money -= 2)
+                        if (money -= 20)
                             can_afford = true;
                     }
                     else if (check_tower == 2) {
-                        if (money -= 3)
+                        if (money -= 30)
                             can_afford = true;
                     }
                 }

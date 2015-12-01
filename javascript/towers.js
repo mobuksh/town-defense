@@ -16,7 +16,7 @@ var Tower = function () {
         bulletCounter: 0,
         jitter: false
     };
-    this.inventoryTowers[0].imageIcon.src = "images/tower/green-castle.png";
+    this.inventoryTowers[0].imageIcon.src = "images/tower/white-castle.png";
     this.inventoryTowers[1] = {
         towerType: 1,
         imageIcon: document.createElement("img"),
@@ -29,7 +29,7 @@ var Tower = function () {
         bulletCounter: 0,
         jitter: false
     };
-    this.inventoryTowers[1].imageIcon.src = "images/tower/red-castle.png";
+    this.inventoryTowers[1].imageIcon.src = "images/tower/green-castle.png";
     this.inventoryTowers[2] = {
         towerType: 2,
         imageIcon: document.createElement("img"),
@@ -42,7 +42,7 @@ var Tower = function () {
         bulletCounter: 0,
         jitter: true
     };
-    this.inventoryTowers[2].imageIcon.src = "images/tower/white-castle.png";
+    this.inventoryTowers[2].imageIcon.src = "images/tower/red-castle.png";
 
     // make all of the inventory items display at the same horizontal position
     this.topOfTowers = canvas.height - this.inventoryTowers[0].height;
@@ -55,5 +55,6 @@ var Tower = function () {
     this.cur_bullet_index = 0;
     this.maxTowerBullets = 10;
     this.aTowerisClicked = false;
+
 
 }

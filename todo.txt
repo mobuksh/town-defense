@@ -1,34 +1,48 @@
+MONDAY/TUESDAY
++ add music and artwork (sfx if there is time)
+    + (ESSENTIAL) put cash label on towers
+    + spooky sound track
+    + play death sound when enemy dies
+    + homebase image for where the enemy come from
+    + gravestone /cemetry for origin
+    + invert/color-treat the map sheet to make it darker and more spooky
+    + start/end image (find parity if possible)
+        + photoshop the image and text (don't canvas draw it,
+        because it looks shit and takes too long
+    + change bullet color for each tower type
+        + blue, yellow, red
+
++ (optional) add enemy health depletion
++ (optional) blink/sparkle money bag if money is too low and fancy update cash text (sparkle) (
+
+//SATURDAY/SUNDAY
     > fix the bullet collision
         > issue: everything EXCEPT what is in the tower range is currently dying
             - drawing the x and y next to each enemy
             - slowing down bullets and altering to 3 bullets with positions printing
 
+    + make each tower different
+        1) tower one - as is
+        2) tower 2 - more bullets
+        3) tower 3 - more bullets and jitter
+        + add more jitter + bullets for different tower types
+        + (optional) make the enemy shoot direction compensate based
+          on distance (get distance on fire and add to x/y)
+    + when lives = 0, gamestate = end screen
+    + add cash for enemy kills (change cost to $10, $20, $30)
+    + end game on 0 lives, refresh page when spacebar is pressed
+    + CONSOLIDATE LOOPS TO FIX LOOP ISSUES (affects bullet firing and collisions)
+
+
+WONT FIX
 // SATURDAY
 > fix dropping of towers onto path
     > towers should not be droppable on path
     > red color for hover where tile is not allowed
     > fix multiple towers becoming selected when mouse hovers
 
-+ make each tower different
-    1) tower one - as is
-    2) tower 2 - more bullets
-    3) tower 3 - more bullets and jitter
-    + add more jitter + bullets for different tower types
-    + (optional) make the enemy shoot direction compensate based
-      on distance (get distance on fire and add to x/y)
-+ when lives = 0, gamestate = end screen
-+ add cash for enemy kills (change cost to $10, $20, $30)
-+ end game on 0 lives, refresh page when spacebar is pressed
-+ CONSOLIDATE LOOPS TO FIX LOOP ISSUES (affects bullet firing and collisions)
 
-// SUNDAY
-+ add music and artwork (sfx if there is time)
-    + (ESSENTIAL) put cash label on towers
-    + change opening image (creative commons spooky image)
-    + spooky sound track
-    + play death sound when enemy dies
 
-+ (optional) add enemy health depletion
 
 
 SCRATCHPAD:
