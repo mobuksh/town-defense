@@ -385,7 +385,7 @@ function runGame() {
     context.save;
     context.drawImage(tombstone, 70, 0, 35, 35);
     context.restore;
-
+    //lives = 0;
     //var farm = document.createElement("img");
     //farm.src = ("images/farm.svg");
     //

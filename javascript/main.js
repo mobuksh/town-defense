@@ -119,21 +119,21 @@ function pixelToTile(pixel) {
 
 
 var menu_music = new Howl({
-    urls: ["audio/Carefree.mp3"],
+    urls: ["audio/kevin-macleod-the-lift.mp3"],
     loop: true,
     buffer: true,
     volume: 0.5
 });
 
 var game_music = new Howl({
-    urls: ["audio/TheLift.mp3"],
+    urls: ["audio/kevin-macleod-mystic-force.mp3"],
     loop: true,
     buffer: true,
     volume: 0.5
 });
 
 var ned_music = new Howl({
-    urls: ["audio/Rest.mp3"],
+    urls: ["audio/kevin-macleod-the-lift.mp3"],
     loop: true,
     buffer: true,
     volume: 0.5
@@ -181,6 +181,10 @@ function run() {
                 ned_music.stop();
                 is_ned_music_playing = false;
             }
+
+            if (window.onload === true ) {
+                townHideShow();
+            }            //townImage.style.visibility = 'hidden';
             runMenu();
             break;
         case(GAME_STATE):
@@ -196,6 +200,10 @@ function run() {
                 ned_music.stop();
                 is_ned_music_playing = false;
             }
+            //townImage.style.visibility == 'visible';
+            //if (window.onload === true ) {
+                townHideShow();
+            //}
             runGame();
             break;
         case(END_STATE):
@@ -211,9 +219,14 @@ function run() {
                 ned_music.play();
                 is_ned_music_playing = true;
             }
+            //townImage.style.visibility = 'hidden';
+            //if (window.onload === true ) {
+                townHideShow();
+            //}
             runEnd();
             break;
     }
+    //lives = 0;
 }
 /*
  function run() {

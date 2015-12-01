@@ -17,18 +17,18 @@
             /*position: relative;*/
             /*z-index: 100;*/
         }
-        .hut {
-            float: right;
-            width: 150px;
-        }
-        .bridge {
+
+        #town {
             width: 300px;
             float: right;
             position: relative;
             left: -80px;
             top: -39px;
+            visibility: hidden;
+            /*visibility: ;*/
         }
     </style>
+
 </head>
 <body style="background-color: black; color: MAROON; font-family: 'Fredericka the Great', cursive;">
 <div>
@@ -59,10 +59,19 @@
         <script src="javascript/enemy-kill.js"></script>
         <script src="javascript/main.js"></script>
         <!--<img class="hut" src="images/hut-350.png">-->
-        <img class="bridge" src="images/town-03.png">
+        <img id="town" src="images/town-03.png">
     </div>
 </div>
 <link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
-
+<script>
+    var townImage = document.getElementById('town');
+    function townHideShow(){
+        if (state === GAME_STATE){
+            townImage.style.visibility = 'visible';
+        } else {
+            townImage.style.visibility = 'hidden';
+        }
+    }
+</script>
 </body>
 </html>

@@ -1,4 +1,10 @@
 MONDAY/TUESDAY
+    + fix click causes money depletion bug
++ remove bullet collisions on origin/
+  kill nearest if in origin
+    + only show town if game state
+    + remove psd files from image folder
+
 + add music and artwork (sfx if there is time)
     + (ESSENTIAL) put cash label on towers
     + spooky sound track
