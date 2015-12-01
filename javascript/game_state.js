@@ -21,14 +21,15 @@ var priceLabelCenterX = 35;
 var priceLabelCenterY = 690;
 var priceLabelOffset = 15;
 
-function startWave() {
+function startWave(waveNumber, waveAmount) {
 
     waveStarted = true;
     waveFinished = false;
     wave_timer = 0.0;
 	enemy = [];
-    for (var i = 0; i < wavePopulation; i++) {
-        enemy[i] = new Enemy(wave, i);
+	enemyIndex = 0;
+    for (var i = 0; i < waveAmount; i++) {
+        enemy[i] = new Enemy(waveNumber, i);
     }
 
     //var clock = 2;
@@ -54,7 +55,7 @@ function startWave() {
 
 }
 
-function SpawnEnemy(wavePop) {
+function SpawnEnemy(waveAmount) {
 	//console.log("" + enemy.length);
     if (enemy_index < enemy.length)
         enemy[enemy_index].init_waypoints();
@@ -86,8 +87,8 @@ function runGame() {
         debugger;
     }
 
-    /*
-     if (mouselistener.mouseDown == true) {
+
+     //if (mouselistener.mouseDown == true) {
      context.fillStyle = "#f00";
      context.font = "14px Arial";
 
@@ -98,7 +99,8 @@ function runGame() {
      var mouse_y = pixelToTile(mouselistener.page_y);
 
      context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
-     }
+     //}
+/*
 
 
 
@@ -260,12 +262,27 @@ function runGame() {
     if (deathCount == wavePopulation) {
         waveFinished = true;
         waveStarted = false;
-        wave += 1
+        wave += 1;
+		enemy = [];
+		console.log("Starting Wave # " + wave);
+
     }
 
-    if (!waveStarted || waveFinished) {
-        startWave();
 
+	var wavePop = (wave * 40) / 2;
+
+
+
+    if (!waveStarted || waveFinished) {
+        startWave(wave, wavePop);
+		console.log("wave Population:" + wavePop);
+    }
+    else {
+        wave_timer += deltaTime;
+        if (wave_timer > 1.5) {
+            SpawnEnemy(wavePop);
+            wave_timer = 0.0;
+        }
     }
 
 
@@ -276,39 +293,9 @@ function runGame() {
         enemy[enemyIndex].draw();
     }
 
-    var wavePop = (wave * 40) / 2;
 
-    if (!waveStarted || waveFinished) {
-        startWave();
-    }
-    else {
-        wave_timer += deltaTime;
-        if (wave_timer > 1.5) {
-            SpawnEnemy(wavePop);
-            wave_timer = 0.0;
-        }
-    }
 
-    var deathCount = 0;
 
-    //for (var dead = 0; dead < enemy.length; dead++) {
-    //    if (enemy[dead].dead)
-    //        deathCount += 1;
-    //}
-
-    if (deathCount >= wavePop) {
-        wave += 1;
-        waveStarted = false;
-        waveFinished = true;
-        enemy = [];
-        //startWave();
-    }
-
-    //ENEMIES
-    for (var enemyIndex = 0; enemyIndex < enemy.length; enemyIndex++) {
-        enemy[enemyIndex].update(deltaTime);
-        enemy[enemyIndex].draw();
-    }
     /*
      context.fillStyle = "green";
      context.fillRect(0, 0, canvas.width, canvas.height);

@@ -28,42 +28,70 @@ function checkCollide() {
         for (var thisEnemy = 0; thisEnemy < enemy.length; thisEnemy++) {
             for (var thisBullet = 0; thisBullet < testTower.allTowers[thisTower].thisTowerBullets.length; thisBullet++) {
                 //console.log("check enemy: ", enemy[thisEnemy].x, enemy[thisEnemy].y);
+                //console.log("bullet x: ", testTower.allTowers[thisTower].thisTowerBullets[thisBullet].x)
+                //console.log("bullet y: ", testTower.allTowers[thisTower].thisTowerBullets[thisBullet].y)
+                //bullet is not in forbidden area
                 if (AABB(
                         testTower.allTowers[thisTower].thisTowerBullets[thisBullet].x,
                         testTower.allTowers[thisTower].thisTowerBullets[thisBullet].x + testTower.allTowers[thisTower].thisTowerBullets[thisBullet].image.width,
                         testTower.allTowers[thisTower].thisTowerBullets[thisBullet].y,
                         testTower.allTowers[thisTower].thisTowerBullets[thisBullet].y + testTower.allTowers[thisTower].thisTowerBullets[thisBullet].image.height,
-                        enemy[thisEnemy].x + (TILE),
-                        (enemy[thisEnemy].x + (TILE)) + enemy[thisEnemy].image.width,
-                        enemy[thisEnemy].y + (TILE),
-                        (enemy[thisEnemy].y + TILE) + enemy[thisEnemy].image.height
-                        //testTower.allTowers[i].x,
-                        //testTower.allTowers[i].x + testTower.allTowers[i].x.width,
-                        //testTower.allTowers[i].y,
-                        //testTower.allTowers[i].y + testTower.allTowers[i].height
-                        //bullets[j].x + bullets[j].image.width / 2,
-                        //bullets[j].y - bullets[j].image.height / 2,
-                        //bullets[j].y + bullets[j].image.height / 2
-                    )) {
-                    if (enemy[thisEnemy].dead === false) {
-                        enemy[thisEnemy].health -= 20;
+                        3 * (TILE),
+                        3 * (TILE) + TILE,
+                        0,
+                        TILE
+                    ) === false
 
-                        if (enemy[thisEnemy].health <= 0) {
+                ) {
+                    console.log("true");
+
+                    //console.log("check");
+                    if (AABB(
+                            testTower.allTowers[thisTower].thisTowerBullets[thisBullet].x,
+                            testTower.allTowers[thisTower].thisTowerBullets[thisBullet].x + testTower.allTowers[thisTower].thisTowerBullets[thisBullet].image.width,
+                            testTower.allTowers[thisTower].thisTowerBullets[thisBullet].y,
+                            testTower.allTowers[thisTower].thisTowerBullets[thisBullet].y + testTower.allTowers[thisTower].thisTowerBullets[thisBullet].image.height,
+                            enemy[thisEnemy].x + (TILE),
+                            (enemy[thisEnemy].x + (TILE)) + enemy[thisEnemy].image.width,
+                            enemy[thisEnemy].y + (TILE),
+                            (enemy[thisEnemy].y + TILE) + enemy[thisEnemy].image.height
+                            //testTower.allTowers[i].x,
+                            //testTower.allTowers[i].x + testTower.allTowers[i].x.width,
+                            //testTower.allTowers[i].y,
+                            //testTower.allTowers[i].y + testTower.allTowers[i].height
+                            //bullets[j].x + bullets[j].image.width / 2,
+                            //bullets[j].y - bullets[j].image.height / 2,
+                            //bullets[j].y + bullets[j].image.height / 2
+                        )) {
+
+
+                        if ((enemy[thisEnemy].health <= 0 || (enemy[thisEnemy].health - 20 <= 0)) && !enemy[thisEnemy].dead) {
                             enemy[thisEnemy].dead = true;
                             money += 10;
                         }
-                    }
-                    //console.log("enemy: ", thisEnemy, " ", enemy[thisEnemy].dead);
-                    //asteroids.splice(i, 1);
-                    //bullets.slice(j, 1);
-                    //gameScore++;
 
+                        if (!enemy[thisEnemy].dead) {
+                            enemy[thisEnemy].health -= 20;
+                            console.log("Enemy Health" + enemy[thisEnemy].health);
+
+                        }
+                        //console.log("enemy: ", thisEnemy, " ", enemy[thisEnemy].dead);
+                        //asteroids.splice(i, 1);
+                        //bullets.slice(j, 1);
+                        //gameScore++;
+
+                        testTower.allTowers[thisTower].thisTowerBullets[thisBullet].dead = true;
+
+                    }
+
+                } else {
+                    testTower.allTowers[thisTower].thisTowerBullets[thisBullet].dead = true;
                 }
             }
         }
-    }
-    //console.log("leave collide checker");
+        //console.log("leave collide checker");
 
+    }
 }
 /*
  //check for collision of Asteroid with player
