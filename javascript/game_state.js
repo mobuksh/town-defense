@@ -88,52 +88,7 @@ function runGame() {
     }
 
 
-     //if (mouselistener.mouseDown == true) {
-     context.fillStyle = "#f00";
-     context.font = "14px Arial";
-
-     context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
-     context.fillText("TILE POSITION: " + pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
-
-     var mouse_x = pixelToTile(mouselistener.page_x);
-     var mouse_y = pixelToTile(mouselistener.page_y);
-
-     context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
-     //}
-/*
-
-
-
-
-     if (mouselistener.mouseDown == true) {
-     debugger;
-     context.fillStyle = "#f00";
-     context.font = "14px Arial";
-
-     context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
-     context.fillText("TILE POSITION: " + pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
-
-     var mouse_x = pixelToTile(mouselistener.page_x);
-     var mouse_y = pixelToTile(mouselistener.page_y);
-
-     context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
-     }
-
-
-     context.fillStyle = "#f00";
-     context.font = "14px Arial";
-
-     context.fillText("MOUSE DOWN - POSITION: " + mouselistener.page_x + " / " + mouselistener.page_y, 5, 40);
-     context.fillText("TILE POSITION: " + pixelToTile(mouselistener.page_x) + " / " + pixelToTile(mouselistener.page_y), 5, 60);
-
-     var mouse_x = pixelToTile(mouselistener.page_x);
-     var mouse_y = pixelToTile(mouselistener.page_y);
-
-     // cellAtPixelCoord(layer, x, y)
-     var testLayer = "road";
-     context.fillText("TILE POSITION IN PIXELS: " + tileToPixel(mouse_x) + " / " + tileToPixel(mouse_y), 5, 80);
-     //context.fillText("LAYER "+ testLayer + ": " + cellAtPixelCoord(testLayer, mouselistener.page_x, mouselistener.page_y), 5, 100);
-     */
+ 
     //UPDATE/DRAW INVENTORY TOWERS AT BOTTOM OF PAGE
     testTower.update();
     testTower.draw(mouselistener.page_x, mouselistener.page_y);
